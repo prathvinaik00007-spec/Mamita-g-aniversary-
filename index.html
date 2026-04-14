@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<title>Happy 1 Year 🌸 | Our Journey</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+<title>Happy 1 Year 🌸</title>
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Crimson+Pro:ital,wght@0,300;0,400;1,300;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -24,12 +24,16 @@ body {
   height: 100vh;
   font-family: 'Crimson Pro', serif;
   touch-action: none;
+  position: fixed;
 }
 
-/* PHASE 1 — GARDEN */
+/* ═══════════ PHASE 1 — GARDEN ═══════════ */
 #garden-canvas {
-  position: fixed; inset: 0;
-  width: 100%; height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   cursor: crosshair;
   z-index: 1;
   touch-action: none;
@@ -101,6 +105,7 @@ body {
   transition: all 0.3s;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
+  touch-action: manipulation;
 }
 .gbtn-clear {
   background: rgba(255,255,255,0.12);
@@ -129,6 +134,7 @@ body {
   font-size: 13px;
   z-index: 20;
   font-style: italic;
+  pointer-events: none;
 }
 
 #continue-wrap {
@@ -153,6 +159,7 @@ body {
   box-shadow: 0 0 40px rgba(255,77,126,0.4), 0 0 80px rgba(199,125,255,0.2);
   animation: btnPulse 2.2s ease-in-out infinite;
   letter-spacing: 0.3px;
+  touch-action: manipulation;
 }
 #continue-btn small {
   display: block;
@@ -168,16 +175,20 @@ body {
   50% { box-shadow: 0 0 60px rgba(255,77,126,0.65), 0 0 120px rgba(199,125,255,0.35); transform: scale(1.04); }
 }
 
-/* PHASE 2 — QUESTION */
+/* ═══════════ PHASE 2 — QUESTION ═══════════ */
 #question-phase {
-  position: fixed; inset: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   display: none;
   align-items: center;
   justify-content: center;
   z-index: 100;
-  background: rgba(0,0,0,0.75);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
+  background: rgba(0,0,0,0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 .q-inner {
@@ -230,17 +241,21 @@ body {
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   line-height: 1.4;
+  touch-action: manipulation;
 }
-.opt:hover, .opt:active {
-  background: rgba(255,77,126,0.22);
-  border-color: rgba(255,77,126,0.5);
-  transform: translateX(8px);
-  box-shadow: 0 0 20px rgba(255,77,126,0.15);
+.opt:active {
+  background: rgba(255,77,126,0.35);
+  border-color: rgba(255,77,126,0.7);
+  transform: translateX(8px) scale(0.98);
 }
 
-/* PHASE 3 — LETTER */
+/* ═══════════ PHASE 3 — LETTER ═══════════ */
 #letter-phase {
-  position: fixed; inset: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   display: none;
   overflow-y: auto;
   overflow-x: hidden;
@@ -250,7 +265,11 @@ body {
 }
 
 #letter-bg {
-  position: fixed; inset: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   z-index: 0;
   pointer-events: none;
   background:
@@ -260,7 +279,11 @@ body {
 }
 
 #letter-canvas {
-  position: fixed; inset: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   z-index: 1;
   pointer-events: none;
 }
@@ -299,8 +322,8 @@ body {
   line-height: 1.3;
   background: linear-gradient(135deg, #FF8FB1 0%, #E0AAFF 50%, #FFD6A0 100%);
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   background-clip: text;
+  color: transparent;
   margin-bottom: 14px;
 }
 .l-kaomoji {
@@ -368,8 +391,8 @@ body {
   font-size: 30px;
   background: linear-gradient(135deg, #FF8FB1, #C77DFF);
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   background-clip: text;
+  color: transparent;
   display: block;
   margin-bottom: 16px;
 }
@@ -386,11 +409,11 @@ body {
   margin-bottom: 8px;
 }
 
-/* Falling petals animation */
+/* Falling petals */
 .falling-petal {
   position: fixed;
   pointer-events: none;
-  z-index: 5;
+  z-index: 15;
   animation: petalFall linear forwards;
   font-size: 16px;
 }
@@ -399,8 +422,13 @@ body {
   100% { transform: translateY(110vh) rotate(540deg); opacity: 0; }
 }
 
+/* Transition overlay */
 #overlay {
-  position: fixed; inset: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background: #000;
   z-index: 500;
   pointer-events: none;
@@ -410,24 +438,40 @@ body {
 #overlay.fade-in  { opacity: 1; pointer-events: all; }
 #overlay.fade-out { opacity: 0; }
 
+/* Petals container */
+#petals-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 15;
+  overflow: hidden;
+}
 </style>
 </head>
 <body>
 
 <div id="overlay"></div>
+<div id="petals-overlay"></div>
 
-<!-- GARDEN -->
 <canvas id="garden-canvas"></canvas>
+
 <div class="garden-title"><span>🌸 Flower Garden for You</span></div>
+
 <div class="hint-box" id="hint-box">
   <span class="h1">Tap anywhere to bloom 🌺</span>
   <span class="h2">✨ or turn on Auto Bloom below</span>
 </div>
+
 <div id="flower-counter">🌸 0</div>
+
 <div class="garden-btns">
   <button class="gbtn gbtn-clear" id="clearBtn">🌱 Clear Garden</button>
   <button class="gbtn gbtn-auto" id="autoBtn">✨ Auto Bloom</button>
 </div>
+
 <div id="continue-wrap">
   <button id="continue-btn">
     Continue to something special 💌
@@ -435,22 +479,20 @@ body {
   </button>
 </div>
 
-<!-- QUESTION PHASE -->
 <div id="question-phase">
   <div class="q-inner">
     <span class="q-emoji">💍</span>
     <div class="q-title">What will you do<br>if I propose you?</div>
     <div class="q-sub">take your time… I'm totally calm 🥺</div>
     <div class="options">
-      <button class="opt" data-answer="1">💍 Say YES before you even finish asking</button>
-      <button class="opt" data-answer="2">😭 Cry happy tears, then say yes 100 times</button>
-      <button class="opt" data-answer="3">🥺 Faint from happiness, wake up still saying YES</button>
-      <button class="opt" data-answer="4">👗 I already planned my outfit for this moment lol</button>
+      <button class="opt" data-answer="say yes">💍 Say YES before you even finish asking</button>
+      <button class="opt" data-answer="cry yes">😭 Cry happy tears, then say yes 100 times</button>
+      <button class="opt" data-answer="faint yes">🥺 Faint from happiness, wake up still saying YES</button>
+      <button class="opt" data-answer="outfit ready">👗 I already planned my outfit for this moment lol</button>
     </div>
   </div>
 </div>
 
-<!-- LETTER PHASE -->
 <div id="letter-phase">
   <div id="letter-bg"></div>
   <canvas id="letter-canvas"></canvas>
@@ -463,7 +505,8 @@ body {
     </div>
     <div class="letter-body">
       <p class="para">A whole year of us…</p>
-      <p class="para">And when I look back I don't just see the happy moments — I see <span class="pink">everything.</span><br><br>I see the late-night talks, the random little things that made us smile, the way u call me ur baby nd treat me like ur chotu bcha 😽😽😽</p>
+      <p class="para">And when I look back i don't just see the happy moments — I see <span class="pink">everything.</span><br><br>
+      I see the late-night talks, the random little things that made us smile, the way u call me ur baby nd treat me like ur chotu bcha 😽😽😽</p>
       <p class="para">The way u always try to understand me even when I don't know how to explain myself.</p>
       <p class="para">I see every misunderstanding, every time we both overthought, every time we got hurt, cried, got scared, thought too much — nd still somehow <span class="pink">found our way back to each other.</span></p>
       <p class="para">We were never perfect. But maybe that's why this feels so real. Cuz no matter how difficult it got, no matter how many times we both got scared of losing each other — we still stayed. <span class="purple">u stayed too.</span></p>
@@ -472,8 +515,11 @@ body {
       <p class="para">U made me feel seen, important, cared for nd safe. Even when u were hurting, u still thought about me first. Even when u felt like u were "too much" — all I ever saw was a girl with the <span class="pink">softest, most sensitive heart</span> who loves so deeply that sometimes it scares her, yet still holds pure love 👉👈</p>
       <p class="para">Nd Ik I'm not easy either. Ik I overthink, go quiet, get hurt nd sometimes say the wrong things. But through all of that — <span class="purple">u still chose me.</span></p>
       <span class="section-divider">· · ·</span>
-      <p class="para">Thank u for every <span class="pink">"I love us"</span> 🤭<br><br>Every reassurance. Every time u stayed instead of giving up. Every time u reminded me that we're on the same side.</p>
-      <p class="para">I don't want a perfect love story. <span class="purple">I want this one.</span><br><br>I want YOU — exactly as u are — for every year after this too.<br><br>For every lifetime (づ｡◕‿‿◕｡)づ</p>
+      <p class="para">Thank u for every <span class="pink">"I love us"</span> 🤭<br><br>
+      Every reassurance. Every time u stayed instead of giving up. Every time u reminded me that we're on the same side.</p>
+      <p class="para">I don't want a perfect love story. <span class="purple">I want this one.</span><br><br>
+      I want YOU — exactly as u are — for every year after this too.<br><br>
+      For every lifetime (づ｡◕‿‿◕｡)づ</p>
     </div>
     <div class="letter-footer">
       <span class="footer-kaomoji">🌸💕🌸</span>
@@ -484,212 +530,189 @@ body {
 </div>
 
 <script>
-// ========== FLOWER GARDEN FULL ENGINE (FIXED & FULLY RESPONSIVE) ==========
-const canvas = document.getElementById('garden-canvas');
-const ctx = canvas.getContext('2d');
-let W, H;
-let flowers = [];
-let autoBloom = false;
-let autoInterval = null;
-let globalTime = 0;
-let lastTimestamp = 0;
-let animationId = null;
-let continueShown = false;
-
-function resizeCanvas() {
-  W = canvas.width = window.innerWidth;
-  H = canvas.height = window.innerHeight;
-}
-resizeCanvas();
-window.addEventListener('resize', () => { resizeCanvas(); redrawImmediate(); });
-
-const PETAL_COLORS = ['#FF8FB1','#FF6B9D','#FF4D7E','#C77DFF','#9B5DE5','#E0AAFF','#FFD60A','#FF4D6D','#FF0054'];
-const TYPES = ['cosmos','daisy','heart','star','cosmos','daisy'];
-
-function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
-
-class Flower {
-  constructor(x) {
-    this.x = x;
-    this.stemH = 70 + Math.random() * 140;
-    this.type = TYPES[Math.floor(Math.random() * TYPES.length)];
-    this.color = PETAL_COLORS[Math.floor(Math.random() * PETAL_COLORS.length)];
-    this.ps = 16 + Math.random() * 22;
-    this.swayAmp = 3 + Math.random() * 6;
-    this.swaySpeed = 0.4 + Math.random() * 0.7;
-    this.swayPh = Math.random() * Math.PI * 2;
-    this.swayMid = (Math.random() - 0.5) * 30;
-    this.stemP = 0;
-    this.bloomP = 0;
-    this.done = false;
-    this.leaves = Array.from({ length: Math.floor(Math.random() * 2) + 1 }, () => ({
-      t: 0.25 + Math.random() * 0.45,
-      side: Math.random() > 0.5 ? 1 : -1,
-      sz: 7 + Math.random() * 9,
-      p: 0,
-    }));
-    this.sparks = [];
-    this.age = 0;
+(function() {
+  // ========== FLOWER GARDEN ==========
+  const canvas = document.getElementById('garden-canvas');
+  const ctx = canvas.getContext('2d');
+  let W, H;
+  
+  function resize() {
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
   }
+  resize();
+  window.addEventListener('resize', resize);
+  window.addEventListener('orientationchange', function() {
+    setTimeout(resize, 50);
+  });
 
-  stemTip(t, time) {
-    const sw = Math.sin(time * this.swaySpeed + this.swayPh) * this.swayAmp;
-    const cx = this.x + this.swayMid * t + sw * t;
-    const cy = H - this.stemH * t;
-    return { x: cx, y: cy };
-  }
+  const PETAL_COLORS = ['#FF8FB1','#FF6B9D','#FF4D7E','#C77DFF','#9B5DE5','#E0AAFF','#FFD60A','#FF4D6D','#FF0054'];
+  const TYPES = ['cosmos','daisy','heart','star','cosmos','daisy'];
+  
+  const easeOut = t => 1 - Math.pow(1-t, 3);
 
-  update(dt, time) {
-    this.age += dt;
-    if (this.stemP < 1) {
-      this.stemP = Math.min(1, this.stemP + dt * 1.2);
-    } else if (this.bloomP < 1) {
-      this.bloomP = Math.min(1, this.bloomP + dt * 1.5);
-      if (Math.random() < 0.4) {
-        const tip = this.stemTip(1, time);
-        this.sparks.push({
-          x: tip.x + (Math.random() - 0.5) * 35,
-          y: tip.y + (Math.random() - 0.5) * 25,
-          vx: (Math.random() - 0.5) * 1.8,
-          vy: -Math.random() * 2.5,
-          life: 1, sz: Math.random() * 3 + 0.8, c: this.color,
-        });
+  class Flower {
+    constructor(x) {
+      this.x = x;
+      this.stemH = 70 + Math.random() * 140;
+      this.type = TYPES[Math.floor(Math.random()*TYPES.length)];
+      this.color = PETAL_COLORS[Math.floor(Math.random()*PETAL_COLORS.length)];
+      this.ps = 16 + Math.random() * 22;
+      this.swayAmp = 3 + Math.random() * 6;
+      this.swaySpeed = 0.4 + Math.random() * 0.7;
+      this.swayPh = Math.random() * Math.PI * 2;
+      this.swayMid = (Math.random()-0.5) * 30;
+      this.stemP = 0;
+      this.bloomP = 0;
+      this.done = false;
+      this.leaves = Array.from({length: Math.floor(Math.random()*2)+1}, () => ({
+        t: 0.25 + Math.random()*0.45,
+        side: Math.random()>0.5?1:-1,
+        sz: 7 + Math.random()*9,
+        p: 0,
+      }));
+      this.sparks = [];
+      this.age = 0;
+    }
+
+    stemTip(t, time) {
+      const sw = Math.sin(time*this.swaySpeed + this.swayPh) * this.swayAmp;
+      const cx = this.x + this.swayMid*t + sw*t;
+      const cy = H - this.stemH*t;
+      return {x: cx, y: cy};
+    }
+
+    update(dt, time) {
+      this.age += dt;
+      if (this.stemP < 1) {
+        this.stemP = Math.min(1, this.stemP + dt*1.3);
+      } else if (this.bloomP < 1) {
+        this.bloomP = Math.min(1, this.bloomP + dt*1.6);
+        if (Math.random() < 0.35) {
+          const tip = this.stemTip(1, time);
+          this.sparks.push({
+            x: tip.x+(Math.random()-0.5)*35,
+            y: tip.y+(Math.random()-0.5)*25,
+            vx:(Math.random()-0.5)*1.8,
+            vy:-Math.random()*2.5,
+            life:1, sz:Math.random()*3+0.8, c:this.color,
+          });
+        }
+      } else {
+        this.done = true;
       }
-    } else {
-      this.done = true;
+      this.leaves.forEach(l => {
+        if (this.stemP > l.t) l.p = Math.min(1, l.p + dt*2.5);
+      });
+      this.sparks = this.sparks.filter(s=>s.life>0);
+      this.sparks.forEach(s => {
+        s.x+=s.vx; s.y+=s.vy; s.vy+=0.04;
+        s.life -= dt*2.2;
+      });
     }
-    this.leaves.forEach(l => { if (this.stemP > l.t) l.p = Math.min(1, l.p + dt * 2.2); });
-    this.sparks = this.sparks.filter(s => s.life > 0);
-    this.sparks.forEach(s => { s.x += s.vx; s.y += s.vy; s.vy += 0.04; s.life -= dt * 2.2; });
-  }
 
-  draw(ctx, time) {
-    if (this.stemP <= 0) return;
-    const tipBase = this.stemTip(1, time);
-    // stem
-    ctx.save();
-    ctx.strokeStyle = '#2A7A2A';
-    ctx.lineWidth = 2.2;
-    ctx.lineCap = 'round';
-    ctx.beginPath();
-    for (let i = 0; i <= 20; i++) {
-      const t = (i / 20) * this.stemP;
-      const { x, y } = this.stemTip(t, time);
-      if (i === 0) ctx.moveTo(x, y);
-      else ctx.lineTo(x, y);
-    }
-    ctx.stroke();
-    // leaves
-    this.leaves.forEach(lf => {
-      if (lf.p <= 0 || lf.t > this.stemP) return;
-      const pt = this.stemTip(lf.t, time);
+    draw(ctx, time) {
+      if (this.stemP <= 0) return;
       ctx.save();
-      ctx.translate(pt.x, pt.y);
-      ctx.rotate(lf.side * (0.5 + 0.3 * lf.p));
-      ctx.scale(lf.p, lf.p);
-      ctx.fillStyle = '#2E7D2E';
+      ctx.strokeStyle = '#2A7A2A';
+      ctx.lineWidth = 2.2;
+      ctx.lineCap = 'round';
       ctx.beginPath();
-      ctx.ellipse(lf.side * lf.sz * 0.9, 0, lf.sz, lf.sz * 0.38, 0, 0, Math.PI * 2);
+      const segs = 24;
+      for (let i=0; i<=segs; i++) {
+        const t = (i/segs)*this.stemP;
+        const {x,y} = this.stemTip(t, time);
+        i===0 ? ctx.moveTo(x,y) : ctx.lineTo(x,y);
+      }
+      ctx.stroke();
+      
+      this.leaves.forEach(lf => {
+        if (lf.p <= 0 || lf.t > this.stemP) return;
+        const pt = this.stemTip(lf.t, time);
+        ctx.save();
+        ctx.translate(pt.x, pt.y);
+        ctx.rotate(lf.side*(0.5 + 0.3*lf.p));
+        ctx.scale(lf.p, lf.p);
+        ctx.fillStyle = '#2E7D2E';
+        ctx.beginPath();
+        ctx.ellipse(lf.side*lf.sz*0.9, 0, lf.sz, lf.sz*0.38, 0, 0, Math.PI*2);
+        ctx.fill();
+        ctx.restore();
+      });
+      
+      if (this.bloomP > 0) {
+        const tip = this.stemTip(1, time);
+        this.drawBloom(ctx, tip.x, tip.y, this.bloomP, time);
+      }
+      
+      this.sparks.forEach(s => {
+        ctx.globalAlpha = Math.max(0, s.life*0.85);
+        ctx.fillStyle = s.c;
+        ctx.fillRect(s.x-s.sz/2, s.y-0.8, s.sz, 1.6);
+        ctx.fillRect(s.x-0.8, s.y-s.sz/2, 1.6, s.sz);
+        ctx.globalAlpha = 1;
+      });
+      ctx.restore();
+    }
+
+    drawBloom(ctx, cx, cy, p, time) {
+      const s = this.ps * easeOut(p);
+      const wobble = Math.sin(time*this.swaySpeed*2+this.swayPh)*0.04;
+      ctx.save();
+      ctx.translate(cx, cy);
+      const grd = ctx.createRadialGradient(0,0,0,0,0,s*2);
+      grd.addColorStop(0, this.color+'55');
+      grd.addColorStop(0.5, this.color+'22');
+      grd.addColorStop(1, 'transparent');
+      ctx.fillStyle = grd;
+      ctx.beginPath();
+      ctx.arc(0,0,s*2,0,Math.PI*2);
       ctx.fill();
-      ctx.restore();
-    });
-    // bloom
-    if (this.bloomP > 0) {
-      const tip = this.stemTip(1, time);
-      this.drawBloom(ctx, tip.x, tip.y, this.bloomP, time);
-    }
-    // sparks
-    this.sparks.forEach(s => {
-      ctx.save();
-      ctx.globalAlpha = Math.max(0, s.life * 0.85);
-      ctx.fillStyle = s.c;
-      ctx.fillRect(s.x - s.sz / 2, s.y - 0.8, s.sz, 1.6);
-      ctx.fillRect(s.x - 0.8, s.y - s.sz / 2, 1.6, s.sz);
-      ctx.restore();
-    });
-    ctx.restore();
-  }
-
-  drawBloom(ctx, cx, cy, p, time) {
-    const s = this.ps * easeOut(p);
-    const wobble = Math.sin(time * this.swaySpeed * 2 + this.swayPh) * 0.04;
-    ctx.save();
-    ctx.translate(cx, cy);
-    const grd = ctx.createRadialGradient(0, 0, 0, 0, 0, s * 2);
-    grd.addColorStop(0, this.color + '55');
-    grd.addColorStop(0.5, this.color + '22');
-    grd.addColorStop(1, 'transparent');
-    ctx.fillStyle = grd;
-    ctx.beginPath();
-    ctx.arc(0, 0, s * 2, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.rotate(wobble);
-    if (this.type === 'cosmos') this.drawCosmos(ctx, s, p);
-    else if (this.type === 'daisy') this.drawDaisy(ctx, s, p);
-    else if (this.type === 'heart') this.drawHeart(ctx, s, p);
-    else this.drawStar(ctx, s, p);
-    ctx.restore();
-  }
-
-  drawCosmos(ctx, s, p) {
-    for (let i = 0; i < 6; i++) {
-      ctx.save();
-      ctx.rotate((i / 6) * Math.PI * 2);
-      ctx.scale(easeOut(p), easeOut(p));
-      const grad = ctx.createRadialGradient(0, -s * 0.25, 0, 0, -s * 0.7, s * 0.55);
-      grad.addColorStop(0, 'rgba(255,255,255,0.95)');
-      grad.addColorStop(0.35, this.color + 'DD');
-      grad.addColorStop(1, this.color + '33');
-      ctx.fillStyle = grad;
-      ctx.beginPath();
-      ctx.ellipse(0, -s * 0.65, s * 0.26, s * 0.52, 0, 0, Math.PI * 2);
-      ctx.fill();
+      ctx.rotate(wobble);
+      if (this.type==='cosmos') this._cosmos(ctx, s, p);
+      else if (this.type==='daisy') this._daisy(ctx, s, p);
+      else if (this.type==='heart') this._heart(ctx, s, p, time);
+      else if (this.type==='star') this._star(ctx, s, p);
       ctx.restore();
     }
-    ctx.save();
-    ctx.scale(easeOut(p), easeOut(p));
-    ctx.fillStyle = '#FFF4AA';
-    ctx.beginPath();
-    ctx.arc(0, 0, s * 0.22, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.restore();
-  }
 
-  drawDaisy(ctx, s, p) {
-    for (let i = 0; i < 10; i++) {
+    _cosmos(ctx, s, p) {
+      const n = 6;
+      for (let i=0; i<n; i++) {
+        ctx.save();
+        ctx.rotate((i/n)*Math.PI*2);
+        ctx.scale(easeOut(p), easeOut(p));
+        const g = ctx.createRadialGradient(0,-s*0.25,0, 0,-s*0.7,s*0.55);
+        g.addColorStop(0,'rgba(255,255,255,0.95)');
+        g.addColorStop(0.35, this.color+'DD');
+        g.addColorStop(1, this.color+'33');
+        ctx.fillStyle = g;
+        ctx.beginPath();
+        ctx.ellipse(0,-s*0.65, s*0.26,s*0.52, 0,0,Math.PI*2);
+        ctx.fill();
+        ctx.restore();
+      }
       ctx.save();
-      ctx.rotate((i / 10) * Math.PI * 2);
-      ctx.scale(easeOut(p), easeOut(p));
-      ctx.fillStyle = this.color + 'CC';
+      ctx.scale(easeOut(p),easeOut(p));
+      const cg = ctx.createRadialGradient(0,0,0,0,0,s*0.22);
+      cg.addColorStop(0,'#FFF4AA'); cg.addColorStop(1,'#FF9A00');
+      ctx.fillStyle = cg;
       ctx.beginPath();
-      ctx.ellipse(0, -s * 0.55, s * 0.14, s * 0.44, 0, 0, Math.PI * 2);
+      ctx.arc(0,0,s*0.22,0,Math.PI*2);
       ctx.fill();
       ctx.restore();
     }
-    ctx.save();
-    ctx.scale(easeOut(p), easeOut(p));
-    ctx.fillStyle = '#FFD60A';
-    ctx.beginPath();
-    ctx.arc(0, 0, s * 0.24, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.restore();
-  }
 
-  drawHeart(ctx, s, p) {
-    ctx.save();
-    ctx.scale(easeOut(p), easeOut(p));
-    ctx.fillStyle = this.color;
-    ctx.beginPath();
-    const a = s * 0.5;
-    ctx.moveTo(0, a * 0.7);
-    ctx.bezierCurveTo(-a, -a * 0.5, -a * 0.8, -a, 0, -a * 0.2);
-    ctx.bezierCurveTo(a * 0.8, -a, a, -a * 0.5, 0, a * 0.7);
-    ctx.fill();
-    ctx.restore();
-  }
-
-  drawStar(ctx, s, p) {
-    const spikes = 5;
-    const outer = s * 0.55;
-    const inner = s * 0.26;
-    ctx.sa
+    _daisy(ctx, s, p) {
+      const n = 10;
+      for (let i=0; i<n; i++) {
+        ctx.save();
+        ctx.rotate((i/n)*Math.PI*2);
+        ctx.scale(easeOut(p),easeOut(p));
+        ctx.fillStyle = this.color+'CC';
+        ctx.beginPath();
+        ctx.ellipse(0,-s*0.55, s*0.14,s*0.44, 0,0,Math.PI*2);
+        ctx.fill();
+        ctx.restore();
+      }
+      ctx.save(
