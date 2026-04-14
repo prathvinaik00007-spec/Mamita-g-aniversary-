@@ -4,53 +4,54 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
 <title>Happy 1 Year 🌸</title>
-<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Crimson+Pro:ital,wght@0,300;0,400;1,300;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Crimson+Pro:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
 <style>
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-:root {
-  --pink: #FF8FB1;
-  --purple: #C77DFF;
-  --yellow: #FFD60A;
-  --deep-pink: #FF4D7E;
-  --lavender: #E0AAFF;
-  --soft-white: rgba(255,245,250,0.92);
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
   background: #000;
-  overflow: hidden;
   width: 100vw;
   height: 100vh;
+  overflow: hidden;
   font-family: 'Crimson Pro', serif;
-  touch-action: none;
-  position: fixed;
 }
 
-/* ═══════════ PHASE 1 — GARDEN ═══════════ */
-#garden-canvas {
+/* GARDEN PHASE */
+#garden-phase {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  cursor: crosshair;
+  background: #000;
   z-index: 1;
-  touch-action: none;
+}
+
+#garden-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
 .garden-title {
   position: fixed;
   top: 28px;
   left: 24px;
-  z-index: 10;
+  z-index: 20;
   pointer-events: none;
 }
 .garden-title span {
   font-family: 'Dancing Script', cursive;
   font-size: 16px;
   color: rgba(255,180,210,0.6);
-  letter-spacing: 1px;
 }
 
 .hint-box {
@@ -59,25 +60,22 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
-  z-index: 10;
+  z-index: 20;
   pointer-events: none;
-  transition: opacity 0.8s ease;
+  transition: opacity 0.5s;
 }
 .hint-box .h1 {
   font-family: 'Dancing Script', cursive;
   font-size: 34px;
-  color: var(--pink);
+  color: #FF8FB1;
   display: block;
   text-shadow: 0 0 30px rgba(255,143,177,0.4);
   animation: floatHint 3s ease-in-out infinite;
 }
 .hint-box .h2 {
-  display: block;
   font-size: 14px;
   color: rgba(255,255,255,0.45);
   margin-top: 10px;
-  font-style: italic;
-  letter-spacing: 0.5px;
 }
 
 @keyframes floatHint {
@@ -92,59 +90,58 @@ body {
   transform: translateX(-50%);
   display: flex;
   gap: 12px;
-  z-index: 20;
+  z-index: 30;
 }
 
 .gbtn {
-  padding: 11px 22px;
+  padding: 12px 24px;
   border-radius: 50px;
   border: none;
-  cursor: pointer;
   font-family: 'Crimson Pro', serif;
   font-size: 14px;
-  transition: all 0.3s;
+  font-weight: bold;
   backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  touch-action: manipulation;
+  background: rgba(255,255,255,0.15);
+  color: white;
+  cursor: pointer;
+  z-index: 30;
 }
+
 .gbtn-clear {
   background: rgba(255,255,255,0.12);
-  color: rgba(255,255,255,0.85);
-  border: 1px solid rgba(255,255,255,0.18);
+  border: 1px solid rgba(255,255,255,0.2);
 }
-.gbtn-clear:active { background: rgba(255,255,255,0.2); }
 
 .gbtn-auto {
-  background: rgba(255,140,60,0.22);
-  color: #FFD0A0;
-  border: 1px solid rgba(255,140,60,0.25);
+  background: rgba(255,140,60,0.25);
+  border: 1px solid rgba(255,140,60,0.3);
 }
+
 .gbtn-auto.on {
-  background: rgba(255,100,30,0.4);
-  color: #FFE0C0;
-  box-shadow: 0 0 18px rgba(255,120,40,0.35);
-  border-color: rgba(255,120,40,0.4);
+  background: rgba(255,100,30,0.5);
+  box-shadow: 0 0 15px rgba(255,120,40,0.5);
 }
 
 #flower-counter {
   position: fixed;
   top: 26px;
   right: 22px;
-  color: rgba(255,180,210,0.45);
-  font-size: 13px;
+  color: rgba(255,180,210,0.6);
+  font-size: 14px;
   z-index: 20;
-  font-style: italic;
+  background: rgba(0,0,0,0.3);
+  padding: 5px 12px;
+  border-radius: 20px;
   pointer-events: none;
 }
 
 #continue-wrap {
   position: fixed;
-  bottom: 110px;
+  bottom: 120px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 30;
   display: none;
-  text-align: center;
 }
 
 #continue-btn {
@@ -152,294 +149,148 @@ body {
   background: linear-gradient(135deg, #FF4D7E, #C77DFF);
   border: none;
   border-radius: 50px;
-  color: #fff;
+  color: white;
   font-family: 'Dancing Script', cursive;
   font-size: 20px;
   cursor: pointer;
-  box-shadow: 0 0 40px rgba(255,77,126,0.4), 0 0 80px rgba(199,125,255,0.2);
-  animation: btnPulse 2.2s ease-in-out infinite;
-  letter-spacing: 0.3px;
-  touch-action: manipulation;
-}
-#continue-btn small {
-  display: block;
-  font-family: 'Crimson Pro', serif;
-  font-size: 12px;
-  opacity: 0.7;
-  font-style: italic;
-  margin-top: 2px;
+  animation: btnPulse 2s infinite;
 }
 
 @keyframes btnPulse {
-  0%,100% { box-shadow: 0 0 40px rgba(255,77,126,0.4), 0 0 80px rgba(199,125,255,0.2); transform: scale(1); }
-  50% { box-shadow: 0 0 60px rgba(255,77,126,0.65), 0 0 120px rgba(199,125,255,0.35); transform: scale(1.04); }
+  0%,100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
 }
 
-/* ═══════════ PHASE 2 — QUESTION ═══════════ */
+/* QUESTION PHASE */
 #question-phase {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  background: rgba(0,0,0,0.9);
+  backdrop-filter: blur(8px);
+  z-index: 100;
   display: none;
   align-items: center;
   justify-content: center;
-  z-index: 100;
-  background: rgba(0,0,0,0.85);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
 }
 
 .q-inner {
   text-align: center;
-  padding: 20px 24px 36px;
-  max-width: 400px;
-  width: 92%;
-  animation: popIn 0.6s cubic-bezier(.34,1.56,.64,1) forwards;
+  padding: 30px;
+  max-width: 380px;
+  width: 90%;
 }
 
-@keyframes popIn {
-  from { opacity: 0; transform: scale(0.85) translateY(30px); }
-  to { opacity: 1; transform: scale(1) translateY(0); }
-}
-
-.q-emoji { font-size: 44px; display: block; margin-bottom: 18px; }
-
+.q-emoji { font-size: 50px; display: block; margin-bottom: 20px; }
 .q-title {
   font-family: 'Dancing Script', cursive;
   font-size: 28px;
-  color: #fff;
-  line-height: 1.4;
-  margin-bottom: 6px;
-  text-shadow: 0 0 30px rgba(255,143,177,0.4);
+  color: white;
+  margin-bottom: 10px;
 }
 .q-sub {
-  font-style: italic;
-  font-size: 14px;
-  color: rgba(255,200,220,0.55);
-  margin-bottom: 32px;
+  color: rgba(255,200,220,0.6);
+  margin-bottom: 30px;
 }
 
 .options {
   display: flex;
   flex-direction: column;
-  gap: 13px;
+  gap: 12px;
 }
 
 .opt {
-  background: rgba(255,255,255,0.07);
-  border: 1px solid rgba(255,143,177,0.22);
-  border-radius: 18px;
-  padding: 15px 22px;
-  color: rgba(255,245,250,0.9);
-  font-family: 'Crimson Pro', serif;
-  font-size: 16.5px;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,143,177,0.3);
+  border-radius: 20px;
+  padding: 15px 20px;
+  color: white;
+  font-size: 16px;
+  text-align: center;
   cursor: pointer;
-  transition: all 0.3s;
-  text-align: left;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  line-height: 1.4;
-  touch-action: manipulation;
-}
-.opt:active {
-  background: rgba(255,77,126,0.35);
-  border-color: rgba(255,77,126,0.7);
-  transform: translateX(8px) scale(0.98);
 }
 
-/* ═══════════ PHASE 3 — LETTER ═══════════ */
+/* LETTER PHASE */
 #letter-phase {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  background: #000;
+  z-index: 200;
   display: none;
   overflow-y: auto;
-  overflow-x: hidden;
-  z-index: 200;
-  background: #000;
-  -webkit-overflow-scrolling: touch;
-}
-
-#letter-bg {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-  pointer-events: none;
-  background:
-    radial-gradient(ellipse 80% 60% at 20% 100%, rgba(120,0,60,0.35) 0%, transparent 60%),
-    radial-gradient(ellipse 70% 50% at 80% 0%, rgba(60,0,80,0.3) 0%, transparent 60%),
-    #000;
-}
-
-#letter-canvas {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  pointer-events: none;
 }
 
 .letter-scroll {
-  position: relative;
-  z-index: 10;
   max-width: 500px;
   margin: 0 auto;
-  padding: 64px 28px 100px;
-  opacity: 0;
-  animation: riseIn 1.6s cubic-bezier(.25,.8,.25,1) forwards 0.4s;
+  padding: 60px 25px 100px;
 }
 
-@keyframes riseIn {
-  from { opacity: 0; transform: translateY(40px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.letter-top {
-  text-align: center;
-  margin-bottom: 44px;
-}
-.l-eyebrow {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 11px;
-  letter-spacing: 5px;
-  text-transform: uppercase;
-  color: rgba(255,143,177,0.55);
-  display: block;
-  margin-bottom: 18px;
-}
 .l-title {
   font-family: 'Dancing Script', cursive;
   font-size: 36px;
-  line-height: 1.3;
-  background: linear-gradient(135deg, #FF8FB1 0%, #E0AAFF 50%, #FFD6A0 100%);
+  text-align: center;
+  background: linear-gradient(135deg, #FF8FB1, #E0AAFF, #FFD6A0);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  margin-bottom: 14px;
-}
-.l-kaomoji {
-  font-size: 22px;
-  display: block;
-  margin-bottom: 24px;
-  color: rgba(255,200,220,0.7);
-}
-.l-rule {
-  width: 80px;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255,143,177,0.45), transparent);
-  margin: 0 auto;
+  margin: 20px 0;
 }
 
 .letter-body {
-  font-family: 'Crimson Pro', serif;
-  font-size: 17.5px;
-  line-height: 2;
-  color: rgba(255,245,250,0.88);
+  color: rgba(255,245,250,0.85);
+  font-size: 17px;
+  line-height: 1.9;
 }
 
 .para {
-  margin-bottom: 28px;
-  opacity: 0;
-  animation: fadeSlide 0.8s ease forwards;
-}
-.para:nth-child(1)  { animation-delay: 0.8s; }
-.para:nth-child(2)  { animation-delay: 1.1s; }
-.para:nth-child(3)  { animation-delay: 1.4s; }
-.para:nth-child(4)  { animation-delay: 1.7s; }
-.para:nth-child(5)  { animation-delay: 2.0s; }
-.para:nth-child(6)  { animation-delay: 2.3s; }
-.para:nth-child(7)  { animation-delay: 2.6s; }
-.para:nth-child(8)  { animation-delay: 2.9s; }
-.para:nth-child(9)  { animation-delay: 3.2s; }
-.para:nth-child(10) { animation-delay: 3.5s; }
-.para:nth-child(11) { animation-delay: 3.8s; }
-
-@keyframes fadeSlide {
-  from { opacity: 0; transform: translateY(16px); }
-  to { opacity: 1; transform: translateY(0); }
+  margin-bottom: 25px;
 }
 
-.section-divider {
-  text-align: center;
-  color: rgba(255,143,177,0.35);
-  font-size: 18px;
-  letter-spacing: 12px;
-  margin: 32px 0;
-  display: block;
-}
-
-.pink { color: #FF8FB1; font-style: italic; }
-.purple { color: #D4AAFF; font-style: italic; }
+.pink { color: #FF8FB1; }
+.purple { color: #D4AAFF; }
 
 .letter-footer {
   text-align: center;
-  margin-top: 52px;
-  opacity: 0;
-  animation: fadeSlide 1s ease forwards 4.2s;
+  margin-top: 50px;
 }
+
 .forever {
   font-family: 'Dancing Script', cursive;
-  font-size: 30px;
+  font-size: 28px;
   background: linear-gradient(135deg, #FF8FB1, #C77DFF);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   display: block;
-  margin-bottom: 16px;
-}
-.sign {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
-  color: rgba(255,200,220,0.5);
-  font-size: 15px;
-}
-.footer-kaomoji {
-  font-size: 28px;
-  display: block;
-  margin-top: 20px;
-  margin-bottom: 8px;
 }
 
-/* Falling petals */
-.falling-petal {
-  position: fixed;
-  pointer-events: none;
-  z-index: 15;
-  animation: petalFall linear forwards;
-  font-size: 16px;
-}
-@keyframes petalFall {
-  0%   { transform: translateY(-20px) rotate(0deg); opacity: 0.8; }
-  100% { transform: translateY(110vh) rotate(540deg); opacity: 0; }
-}
-
-/* Transition overlay */
+/* Overlay */
 #overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: #000;
+  background: black;
   z-index: 500;
-  pointer-events: none;
   opacity: 0;
-  transition: opacity 0.7s ease;
+  pointer-events: none;
+  transition: opacity 0.5s;
 }
-#overlay.fade-in  { opacity: 1; pointer-events: all; }
-#overlay.fade-out { opacity: 0; }
 
-/* Petals container */
-#petals-overlay {
+#overlay.show {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* Petals */
+#petals {
   position: fixed;
   top: 0;
   left: 0;
@@ -449,270 +300,373 @@ body {
   z-index: 15;
   overflow: hidden;
 }
+
+.petal {
+  position: absolute;
+  pointer-events: none;
+  animation: fall linear forwards;
+}
+
+@keyframes fall {
+  0% { transform: translateY(-20px) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+}
 </style>
 </head>
 <body>
 
 <div id="overlay"></div>
-<div id="petals-overlay"></div>
+<div id="petals"></div>
 
-<canvas id="garden-canvas"></canvas>
-
-<div class="garden-title"><span>🌸 Flower Garden for You</span></div>
-
-<div class="hint-box" id="hint-box">
-  <span class="h1">Tap anywhere to bloom 🌺</span>
-  <span class="h2">✨ or turn on Auto Bloom below</span>
+<!-- GARDEN PHASE -->
+<div id="garden-phase">
+  <canvas id="garden-canvas"></canvas>
+  <div class="garden-title"><span>🌸 Flower Garden for You</span></div>
+  <div class="hint-box" id="hintBox">
+    <span class="h1">Tap anywhere to bloom 🌺</span>
+    <span class="h2">✨ or turn on Auto Bloom below</span>
+  </div>
+  <div id="flower-counter">🌸 0</div>
+  <div class="garden-btns">
+    <button class="gbtn gbtn-clear" id="clearBtn">🌱 Clear Garden</button>
+    <button class="gbtn gbtn-auto" id="autoBtn">✨ Auto Bloom</button>
+  </div>
+  <div id="continue-wrap">
+    <button id="continueBtn">Continue to something special 💌</button>
+  </div>
 </div>
 
-<div id="flower-counter">🌸 0</div>
-
-<div class="garden-btns">
-  <button class="gbtn gbtn-clear" id="clearBtn">🌱 Clear Garden</button>
-  <button class="gbtn gbtn-auto" id="autoBtn">✨ Auto Bloom</button>
-</div>
-
-<div id="continue-wrap">
-  <button id="continue-btn">
-    Continue to something special 💌
-    <small>tap when your garden is ready</small>
-  </button>
-</div>
-
+<!-- QUESTION PHASE -->
 <div id="question-phase">
   <div class="q-inner">
     <span class="q-emoji">💍</span>
-    <div class="q-title">What will you do<br>if I propose you?</div>
+    <div class="q-title">What will you do if I propose you?</div>
     <div class="q-sub">take your time… I'm totally calm 🥺</div>
     <div class="options">
-      <button class="opt" data-answer="say yes">💍 Say YES before you even finish asking</button>
-      <button class="opt" data-answer="cry yes">😭 Cry happy tears, then say yes 100 times</button>
-      <button class="opt" data-answer="faint yes">🥺 Faint from happiness, wake up still saying YES</button>
-      <button class="opt" data-answer="outfit ready">👗 I already planned my outfit for this moment lol</button>
+      <button class="opt" data-answer="yes1">💍 Say YES before you even finish asking</button>
+      <button class="opt" data-answer="yes2">😭 Cry happy tears, then say yes 100 times</button>
+      <button class="opt" data-answer="yes3">🥺 Faint from happiness, wake up still saying YES</button>
+      <button class="opt" data-answer="yes4">👗 I already planned my outfit for this moment lol</button>
     </div>
   </div>
 </div>
 
+<!-- LETTER PHASE -->
 <div id="letter-phase">
-  <div id="letter-bg"></div>
-  <canvas id="letter-canvas"></canvas>
   <div class="letter-scroll">
-    <div class="letter-top">
-      <span class="l-eyebrow">✦ one whole year ✦</span>
-      <div class="l-title">Happy 1 Year Anniversary<br>my love of life 🫶</div>
-      <span class="l-kaomoji">(づ￣ ³￣)づ</span>
-      <div class="l-rule"></div>
-    </div>
+    <div class="l-title">Happy 1 Year Anniversary<br>my love of life 🫶</div>
     <div class="letter-body">
       <p class="para">A whole year of us…</p>
-      <p class="para">And when I look back i don't just see the happy moments — I see <span class="pink">everything.</span><br><br>
-      I see the late-night talks, the random little things that made us smile, the way u call me ur baby nd treat me like ur chotu bcha 😽😽😽</p>
-      <p class="para">The way u always try to understand me even when I don't know how to explain myself.</p>
-      <p class="para">I see every misunderstanding, every time we both overthought, every time we got hurt, cried, got scared, thought too much — nd still somehow <span class="pink">found our way back to each other.</span></p>
-      <p class="para">We were never perfect. But maybe that's why this feels so real. Cuz no matter how difficult it got, no matter how many times we both got scared of losing each other — we still stayed. <span class="purple">u stayed too.</span></p>
-      <span class="section-divider">· · ·</span>
-      <p class="para">U have loved me in ways nobody ever has.</p>
-      <p class="para">U made me feel seen, important, cared for nd safe. Even when u were hurting, u still thought about me first. Even when u felt like u were "too much" — all I ever saw was a girl with the <span class="pink">softest, most sensitive heart</span> who loves so deeply that sometimes it scares her, yet still holds pure love 👉👈</p>
-      <p class="para">Nd Ik I'm not easy either. Ik I overthink, go quiet, get hurt nd sometimes say the wrong things. But through all of that — <span class="purple">u still chose me.</span></p>
-      <span class="section-divider">· · ·</span>
-      <p class="para">Thank u for every <span class="pink">"I love us"</span> 🤭<br><br>
-      Every reassurance. Every time u stayed instead of giving up. Every time u reminded me that we're on the same side.</p>
-      <p class="para">I don't want a perfect love story. <span class="purple">I want this one.</span><br><br>
-      I want YOU — exactly as u are — for every year after this too.<br><br>
-      For every lifetime (づ｡◕‿‿◕｡)づ</p>
+      <p class="para">And when I look back I don't just see the happy moments — I see <span class="pink">everything.</span></p>
+      <p class="para">The late-night talks, the random little things that made us smile, the way you call me your baby and treat me like your chotu bcha 😽😽😽</p>
+      <p class="para">The way you always try to understand me even when I don't know how to explain myself.</p>
+      <p class="para">I see every misunderstanding, every time we both overthought, every time we got hurt, cried, got scared — and still somehow <span class="pink">found our way back to each other.</span></p>
+      <p class="para">We were never perfect. But maybe that's why this feels so real. <span class="purple">You stayed too.</span></p>
+      <p class="para">You have loved me in ways nobody ever has. You made me feel seen, important, cared for and safe.</p>
+      <p class="para">I don't want a perfect love story. <span class="purple">I want this one.</span></p>
+      <p class="para">I want YOU — exactly as you are — for every year after this too.</p>
     </div>
     <div class="letter-footer">
-      <span class="footer-kaomoji">🌸💕🌸</span>
       <span class="forever">For every year. For every lifetime.</span>
-      <span class="sign">— with all my love, always 💕</span>
+      <p class="sign">— with all my love, always 💕</p>
     </div>
   </div>
 </div>
 
 <script>
-(function() {
-  // ========== FLOWER GARDEN ==========
+// Wait for page to fully load
+window.addEventListener('load', function() {
+  console.log('Page loaded - starting garden');
+  
+  // ========== FLOWER SYSTEM ==========
   const canvas = document.getElementById('garden-canvas');
   const ctx = canvas.getContext('2d');
-  let W, H;
+  let width, height;
+  let flowers = [];
+  let flowerCount = 0;
+  let autoBloom = false;
+  let autoInterval = null;
+  let animationTime = 0;
   
-  function resize() {
-    W = canvas.width = window.innerWidth;
-    H = canvas.height = window.innerHeight;
+  // Colors for flowers
+  const colors = ['#FF8FB1', '#FF6B9D', '#FF4D7E', '#C77DFF', '#9B5DE5', '#E0AAFF', '#FFD60A'];
+  
+  function resizeCanvas() {
+    width = window.innerWidth;
+    height = window.innerHeight;
+    canvas.width = width;
+    canvas.height = height;
+    console.log('Canvas resized to', width, height);
   }
-  resize();
-  window.addEventListener('resize', resize);
-  window.addEventListener('orientationchange', function() {
-    setTimeout(resize, 50);
-  });
-
-  const PETAL_COLORS = ['#FF8FB1','#FF6B9D','#FF4D7E','#C77DFF','#9B5DE5','#E0AAFF','#FFD60A','#FF4D6D','#FF0054'];
-  const TYPES = ['cosmos','daisy','heart','star','cosmos','daisy'];
   
-  const easeOut = t => 1 - Math.pow(1-t, 3);
-
-  class Flower {
-    constructor(x) {
-      this.x = x;
-      this.stemH = 70 + Math.random() * 140;
-      this.type = TYPES[Math.floor(Math.random()*TYPES.length)];
-      this.color = PETAL_COLORS[Math.floor(Math.random()*PETAL_COLORS.length)];
-      this.ps = 16 + Math.random() * 22;
-      this.swayAmp = 3 + Math.random() * 6;
-      this.swaySpeed = 0.4 + Math.random() * 0.7;
-      this.swayPh = Math.random() * Math.PI * 2;
-      this.swayMid = (Math.random()-0.5) * 30;
-      this.stemP = 0;
-      this.bloomP = 0;
-      this.done = false;
-      this.leaves = Array.from({length: Math.floor(Math.random()*2)+1}, () => ({
-        t: 0.25 + Math.random()*0.45,
-        side: Math.random()>0.5?1:-1,
-        sz: 7 + Math.random()*9,
-        p: 0,
-      }));
-      this.sparks = [];
-      this.age = 0;
+  function addFlower(x, y) {
+    if (flowerCount >= 60) return;
+    
+    const color = colors[Math.floor(Math.random() * colors.length)];
+    const size = 25 + Math.random() * 20;
+    const swayOffset = Math.random() * Math.PI * 2;
+    
+    flowers.push({
+      x: x,
+      y: y,
+      color: color,
+      size: size,
+      stemHeight: 60 + Math.random() * 100,
+      swayOffset: swayOffset,
+      swaySpeed: 0.5 + Math.random() * 0.8,
+      growth: 0,
+      petals: 5 + Math.floor(Math.random() * 4),
+      type: Math.floor(Math.random() * 3) // 0=normal, 1=daisy, 2=star
+    });
+    
+    flowerCount++;
+    document.getElementById('flower-counter').innerHTML = `🌸 ${flowerCount}`;
+    
+    // Hide hint after first flower
+    const hintBox = document.getElementById('hintBox');
+    if (flowerCount === 1) {
+      hintBox.style.opacity = '0';
+      setTimeout(() => hintBox.style.display = 'none', 500);
     }
-
-    stemTip(t, time) {
-      const sw = Math.sin(time*this.swaySpeed + this.swayPh) * this.swayAmp;
-      const cx = this.x + this.swayMid*t + sw*t;
-      const cy = H - this.stemH*t;
-      return {x: cx, y: cy};
+    
+    // Show continue button after 3 flowers
+    if (flowerCount === 3) {
+      document.getElementById('continue-wrap').style.display = 'block';
     }
-
-    update(dt, time) {
-      this.age += dt;
-      if (this.stemP < 1) {
-        this.stemP = Math.min(1, this.stemP + dt*1.3);
-      } else if (this.bloomP < 1) {
-        this.bloomP = Math.min(1, this.bloomP + dt*1.6);
-        if (Math.random() < 0.35) {
-          const tip = this.stemTip(1, time);
-          this.sparks.push({
-            x: tip.x+(Math.random()-0.5)*35,
-            y: tip.y+(Math.random()-0.5)*25,
-            vx:(Math.random()-0.5)*1.8,
-            vy:-Math.random()*2.5,
-            life:1, sz:Math.random()*3+0.8, c:this.color,
-          });
+  }
+  
+  function clearGarden() {
+    flowers = [];
+    flowerCount = 0;
+    document.getElementById('flower-counter').innerHTML = `🌸 0`;
+    const hintBox = document.getElementById('hintBox');
+    hintBox.style.display = 'block';
+    hintBox.style.opacity = '1';
+    document.getElementById('continue-wrap').style.display = 'none';
+  }
+  
+  function drawFlower(f, time) {
+    const growth = Math.min(1, f.growth);
+    if (growth <= 0) return;
+    
+    const currentStem = f.stemHeight * growth;
+    const flowerY = f.y - currentStem;
+    const sway = Math.sin(time * f.swaySpeed + f.swayOffset) * 4 * growth;
+    
+    // Draw stem
+    ctx.beginPath();
+    ctx.moveTo(f.x + sway * 0.3, f.y);
+    ctx.lineTo(f.x + sway, flowerY);
+    ctx.strokeStyle = '#2A7A2A';
+    ctx.lineWidth = 3;
+    ctx.stroke();
+    
+    // Draw leaves
+    if (growth > 0.5) {
+      const leafProgress = Math.min(1, (growth - 0.5) * 2);
+      const midY = f.y - currentStem * 0.4;
+      ctx.fillStyle = '#3A8A3A';
+      ctx.beginPath();
+      ctx.ellipse(f.x - 12 * leafProgress + sway * 0.2, midY, 8 * leafProgress, 4 * leafProgress, -0.5, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.beginPath();
+      ctx.ellipse(f.x + 12 * leafProgress + sway * 0.2, midY, 8 * leafProgress, 4 * leafProgress, 0.5, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    
+    // Draw flower bloom
+    const bloomProgress = Math.min(1, Math.max(0, (growth - 0.6) / 0.4));
+    if (bloomProgress > 0) {
+      const currentSize = f.size * bloomProgress;
+      const petalCount = f.type === 1 ? 12 : (f.type === 2 ? 5 : 6);
+      
+      for (let i = 0; i < petalCount; i++) {
+        const angle = (i / petalCount) * Math.PI * 2;
+        const petalX = f.x + sway + Math.cos(angle) * currentSize * 0.6;
+        const petalY = flowerY + Math.sin(angle) * currentSize * 0.6;
+        
+        ctx.beginPath();
+        ctx.ellipse(petalX, petalY, currentSize * 0.35, currentSize * 0.5, angle, 0, Math.PI * 2);
+        ctx.fillStyle = f.color + (bloomProgress < 0.8 ? Math.floor(bloomProgress * 255).toString(16) : 'FF');
+        ctx.fill();
+      }
+      
+      // Center
+      ctx.beginPath();
+      ctx.arc(f.x + sway, flowerY, currentSize * 0.25, 0, Math.PI * 2);
+      ctx.fillStyle = '#FFD700';
+      ctx.fill();
+      ctx.beginPath();
+      ctx.arc(f.x + sway, flowerY, currentSize * 0.12, 0, Math.PI * 2);
+      ctx.fillStyle = '#FF8C00';
+      ctx.fill();
+    }
+  }
+  
+  function animate() {
+    if (!ctx) return;
+    ctx.clearRect(0, 0, width, height);
+    animationTime += 0.033;
+    
+    // Update growth
+    let allGrown = true;
+    for (let i = 0; i < flowers.length; i++) {
+      if (flowers[i].growth < 1) {
+        flowers[i].growth += 0.02;
+        allGrown = false;
+      }
+      drawFlower(flowers[i], animationTime);
+    }
+    
+    // Remove fully grown old flowers if too many
+    if (flowers.length > 80) {
+      flowers = flowers.filter(f => f.growth < 1 || Math.random() > 0.01);
+      flowerCount = flowers.length;
+      document.getElementById('flower-counter').innerHTML = `🌸 ${flowerCount}`;
+    }
+    
+    requestAnimationFrame(animate);
+  }
+  
+  // ========== TOUCH HANDLING (FIXED FOR CHROME) ==========
+  function handleTap(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    
+    let clientX, clientY;
+    if (e.touches) {
+      clientX = e.touches[0].clientX;
+      clientY = e.touches[0].clientY;
+    } else {
+      clientX = e.clientX;
+      clientY = e.clientY;
+    }
+    
+    console.log('Tap at', clientX, clientY);
+    addFlower(clientX, clientY);
+    return false;
+  }
+  
+  // Clear button
+  document.getElementById('clearBtn').addEventListener('click', function(e) {
+    e.stopPropagation();
+    clearGarden();
+  });
+  document.getElementById('clearBtn').addEventListener('touchstart', function(e) {
+    e.stopPropagation();
+    clearGarden();
+  });
+  
+  // Auto bloom button
+  document.getElementById('autoBtn').addEventListener('click', function(e) {
+    e.stopPropagation();
+    autoBloom = !autoBloom;
+    if (autoBloom) {
+      this.classList.add('on');
+      autoInterval = setInterval(() => {
+        if (flowerCount < 50) {
+          const x = 50 + Math.random() * (width - 100);
+          const y = height - 20;
+          addFlower(x, y);
         }
-      } else {
-        this.done = true;
-      }
-      this.leaves.forEach(l => {
-        if (this.stemP > l.t) l.p = Math.min(1, l.p + dt*2.5);
-      });
-      this.sparks = this.sparks.filter(s=>s.life>0);
-      this.sparks.forEach(s => {
-        s.x+=s.vx; s.y+=s.vy; s.vy+=0.04;
-        s.life -= dt*2.2;
-      });
+      }, 600);
+    } else {
+      this.classList.remove('on');
+      if (autoInterval) clearInterval(autoInterval);
     }
-
-    draw(ctx, time) {
-      if (this.stemP <= 0) return;
-      ctx.save();
-      ctx.strokeStyle = '#2A7A2A';
-      ctx.lineWidth = 2.2;
-      ctx.lineCap = 'round';
-      ctx.beginPath();
-      const segs = 24;
-      for (let i=0; i<=segs; i++) {
-        const t = (i/segs)*this.stemP;
-        const {x,y} = this.stemTip(t, time);
-        i===0 ? ctx.moveTo(x,y) : ctx.lineTo(x,y);
-      }
-      ctx.stroke();
-      
-      this.leaves.forEach(lf => {
-        if (lf.p <= 0 || lf.t > this.stemP) return;
-        const pt = this.stemTip(lf.t, time);
-        ctx.save();
-        ctx.translate(pt.x, pt.y);
-        ctx.rotate(lf.side*(0.5 + 0.3*lf.p));
-        ctx.scale(lf.p, lf.p);
-        ctx.fillStyle = '#2E7D2E';
-        ctx.beginPath();
-        ctx.ellipse(lf.side*lf.sz*0.9, 0, lf.sz, lf.sz*0.38, 0, 0, Math.PI*2);
-        ctx.fill();
-        ctx.restore();
-      });
-      
-      if (this.bloomP > 0) {
-        const tip = this.stemTip(1, time);
-        this.drawBloom(ctx, tip.x, tip.y, this.bloomP, time);
-      }
-      
-      this.sparks.forEach(s => {
-        ctx.globalAlpha = Math.max(0, s.life*0.85);
-        ctx.fillStyle = s.c;
-        ctx.fillRect(s.x-s.sz/2, s.y-0.8, s.sz, 1.6);
-        ctx.fillRect(s.x-0.8, s.y-s.sz/2, 1.6, s.sz);
-        ctx.globalAlpha = 1;
-      });
-      ctx.restore();
-    }
-
-    drawBloom(ctx, cx, cy, p, time) {
-      const s = this.ps * easeOut(p);
-      const wobble = Math.sin(time*this.swaySpeed*2+this.swayPh)*0.04;
-      ctx.save();
-      ctx.translate(cx, cy);
-      const grd = ctx.createRadialGradient(0,0,0,0,0,s*2);
-      grd.addColorStop(0, this.color+'55');
-      grd.addColorStop(0.5, this.color+'22');
-      grd.addColorStop(1, 'transparent');
-      ctx.fillStyle = grd;
-      ctx.beginPath();
-      ctx.arc(0,0,s*2,0,Math.PI*2);
-      ctx.fill();
-      ctx.rotate(wobble);
-      if (this.type==='cosmos') this._cosmos(ctx, s, p);
-      else if (this.type==='daisy') this._daisy(ctx, s, p);
-      else if (this.type==='heart') this._heart(ctx, s, p, time);
-      else if (this.type==='star') this._star(ctx, s, p);
-      ctx.restore();
-    }
-
-    _cosmos(ctx, s, p) {
-      const n = 6;
-      for (let i=0; i<n; i++) {
-        ctx.save();
-        ctx.rotate((i/n)*Math.PI*2);
-        ctx.scale(easeOut(p), easeOut(p));
-        const g = ctx.createRadialGradient(0,-s*0.25,0, 0,-s*0.7,s*0.55);
-        g.addColorStop(0,'rgba(255,255,255,0.95)');
-        g.addColorStop(0.35, this.color+'DD');
-        g.addColorStop(1, this.color+'33');
-        ctx.fillStyle = g;
-        ctx.beginPath();
-        ctx.ellipse(0,-s*0.65, s*0.26,s*0.52, 0,0,Math.PI*2);
-        ctx.fill();
-        ctx.restore();
-      }
-      ctx.save();
-      ctx.scale(easeOut(p),easeOut(p));
-      const cg = ctx.createRadialGradient(0,0,0,0,0,s*0.22);
-      cg.addColorStop(0,'#FFF4AA'); cg.addColorStop(1,'#FF9A00');
-      ctx.fillStyle = cg;
-      ctx.beginPath();
-      ctx.arc(0,0,s*0.22,0,Math.PI*2);
-      ctx.fill();
-      ctx.restore();
-    }
-
-    _daisy(ctx, s, p) {
-      const n = 10;
-      for (let i=0; i<n; i++) {
-        ctx.save();
-        ctx.rotate((i/n)*Math.PI*2);
-        ctx.scale(easeOut(p),easeOut(p));
-        ctx.fillStyle = this.color+'CC';
-        ctx.beginPath();
-        ctx.ellipse(0,-s*0.55, s*0.14,s*0.44, 0,0,Math.PI*2);
-        ctx.fill();
-        ctx.restore();
-      }
-      ctx.save(
+  });
+  document.getElementById('autoBtn').addEventListener('touchstart', function(e) {
+    e.stopPropagation();
+    this.click();
+  });
+  
+  // Canvas tap
+  canvas.addEventListener('click', handleTap);
+  canvas.addEventListener('touchstart', handleTap, { passive: false });
+  
+  // Continue button
+  document.getElementById('continueBtn').addEventListener('click', function(e) {
+    e.stopPropagation();
+    startTransition();
+  });
+  document.getElementById('continueBtn').addEventListener('touchstart', function(e) {
+    e.stopPropagation();
+    startTransition();
+  });
+  
+  // ========== TRANSITIONS ==========
+  const overlay = document.getElementById('overlay');
+  
+  function startTransition() {
+    overlay.classList.add('show');
+    setTimeout(() => {
+      document.getElementById('garden-phase').style.display = 'none';
+      document.getElementById('question-phase').style.display = 'flex';
+      overlay.classList.remove('show');
+    }, 500);
+  }
+  
+  // Question options
+  const responses = {
+    'yes1': '💕 I knew it! You made my heart so happy! 💕',
+    'yes2': '😭 Stop you\'re gonna make ME cry! I love you so much! 😭',
+    'yes3': '🥺 Don\'t faint! I need you awake to say yes properly! 🥺',
+    'yes4': '👗 OMG you\'re so cute! I can\'t wait to see it! 👗'
+  };
+  
+  function pickOption(btn) {
+    const answer = btn.getAttribute('data-answer');
+    const qInner = document.querySelector('.q-inner');
+    qInner.innerHTML = `
+      <span class="q-emoji">💕</span>
+      <div class="q-title">${responses[answer]}</div>
+      <div class="q-sub">here's something for you...</div>
+    `;
+    
+    setTimeout(() => {
+      overlay.classList.add('show');
+      setTimeout(() => {
+        document.getElementById('question-phase').style.display = 'none';
+        document.getElementById('letter-phase').style.display = 'block';
+        startPetals();
+        overlay.classList.remove('show');
+      }, 500);
+    }, 1500);
+  }
+  
+  document.querySelectorAll('.opt').forEach(btn => {
+    btn.addEventListener('click', () => pickOption(btn));
+    btn.addEventListener('touchstart', (e) => {
+      e.preventDefault();
+      pickOption(btn);
+    });
+  });
+  
+  // Petals effect
+  function startPetals() {
+    const petalsDiv = document.getElementById('petals');
+    setInterval(() => {
+      const petal = document.createElement('div');
+      petal.className = 'petal';
+      petal.innerHTML = ['🌸', '🌺', '🌸', '🌼', '💕'][Math.floor(Math.random() * 5)];
+      petal.style.left = Math.random() * 100 + '%';
+      petal.style.fontSize = (12 + Math.random() * 20) + 'px';
+      petal.style.animationDuration = (3 + Math.random() * 5) + 's';
+      petalsDiv.appendChild(petal);
+      setTimeout(() => petal.remove(), 8000);
+    }, 300);
+  }
+  
+  // Initialize
+  resizeCanvas();
+  window.addEventListener('resize', resizeCanvas);
+  window.addEventListener('orientationchange', function() {
+    setTimeout(resizeCanvas, 100);
+  });
+  
+  animate();
+  console.log('Garden ready! Tap the screen!');
+});
+</script>
+</body>
+  </html>
