@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
 <title>Happy 1 Year 🌸</title>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Crimson+Pro:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
 <style>
 * {
   margin: 0;
@@ -18,10 +19,9 @@ body {
   height: 100vh;
   overflow: hidden;
   position: fixed;
-  font-family: 'Georgia', serif;
+  font-family: 'Crimson Pro', serif;
 }
 
-/* GARDEN PHASE */
 #garden-phase {
   position: fixed;
   top: 0;
@@ -39,6 +39,8 @@ body {
   width: 100%;
   height: 100%;
   display: block;
+  cursor: crosshair;
+  touch-action: none;
 }
 
 .garden-title {
@@ -49,7 +51,7 @@ body {
   pointer-events: none;
 }
 .garden-title span {
-  font-family: 'Georgia', cursive;
+  font-family: 'Dancing Script', cursive;
   font-size: 16px;
   color: rgba(255,180,210,0.7);
 }
@@ -65,17 +67,18 @@ body {
   transition: opacity 0.5s;
 }
 .hint-box .h1 {
-  font-family: 'Georgia', cursive;
-  font-size: 32px;
+  font-family: 'Dancing Script', cursive;
+  font-size: 34px;
   color: #FF8FB1;
   display: block;
   text-shadow: 0 0 20px rgba(255,143,177,0.5);
   animation: floatHint 3s ease-in-out infinite;
 }
 .hint-box .h2 {
-  font-size: 13px;
-  color: rgba(255,255,255,0.5);
+  font-size: 14px;
+  color: rgba(255,255,255,0.45);
   margin-top: 10px;
+  font-style: italic;
 }
 
 @keyframes floatHint {
@@ -97,15 +100,14 @@ body {
   padding: 12px 24px;
   border-radius: 50px;
   border: none;
-  font-family: 'Georgia', serif;
+  font-family: 'Crimson Pro', serif;
   font-size: 14px;
-  font-weight: bold;
   backdrop-filter: blur(12px);
   background: rgba(255,255,255,0.15);
   color: white;
   cursor: pointer;
-  z-index: 30;
   transition: all 0.2s;
+  touch-action: manipulation;
 }
 
 .gbtn:active {
@@ -138,7 +140,6 @@ body {
   padding: 5px 12px;
   border-radius: 20px;
   pointer-events: none;
-  font-family: monospace;
 }
 
 #continue-wrap {
@@ -156,11 +157,12 @@ body {
   border: none;
   border-radius: 50px;
   color: white;
-  font-family: 'Georgia', cursive;
+  font-family: 'Dancing Script', cursive;
   font-size: 20px;
   cursor: pointer;
   animation: btnPulse 2s infinite;
   white-space: nowrap;
+  touch-action: manipulation;
 }
 
 @keyframes btnPulse {
@@ -168,7 +170,6 @@ body {
   50% { transform: scale(1.05); }
 }
 
-/* QUESTION PHASE */
 #question-phase {
   position: fixed;
   top: 0;
@@ -192,8 +193,8 @@ body {
 
 .q-emoji { font-size: 50px; display: block; margin-bottom: 20px; }
 .q-title {
-  font-family: 'Georgia', cursive;
-  font-size: 26px;
+  font-family: 'Dancing Script', cursive;
+  font-size: 28px;
   color: white;
   margin-bottom: 10px;
 }
@@ -201,6 +202,7 @@ body {
   color: rgba(255,200,220,0.6);
   margin-bottom: 30px;
   font-size: 14px;
+  font-style: italic;
 }
 
 .options {
@@ -216,9 +218,10 @@ body {
   padding: 14px 18px;
   color: white;
   font-size: 15px;
-  text-align: center;
+  text-align: left;
   cursor: pointer;
   transition: all 0.2s;
+  touch-action: manipulation;
 }
 
 .opt:active {
@@ -226,7 +229,6 @@ body {
   transform: scale(0.98);
 }
 
-/* LETTER PHASE */
 #letter-phase {
   position: fixed;
   top: 0;
@@ -246,8 +248,8 @@ body {
 }
 
 .l-title {
-  font-family: 'Georgia', cursive;
-  font-size: 34px;
+  font-family: 'Dancing Script', cursive;
+  font-size: 36px;
   text-align: center;
   background: linear-gradient(135deg, #FF8FB1, #E0AAFF, #FFD6A0);
   -webkit-background-clip: text;
@@ -258,17 +260,17 @@ body {
 }
 
 .letter-body {
-  color: rgba(255,245,250,0.85);
+  color: rgba(255,245,250,0.88);
   font-size: 17px;
-  line-height: 1.9;
+  line-height: 2;
 }
 
 .para {
   margin-bottom: 25px;
 }
 
-.pink { color: #FF8FB1; font-weight: bold; }
-.purple { color: #D4AAFF; font-weight: bold; }
+.pink { color: #FF8FB1; font-style: italic; }
+.purple { color: #D4AAFF; font-style: italic; }
 
 .letter-footer {
   text-align: center;
@@ -276,8 +278,8 @@ body {
 }
 
 .forever {
-  font-family: 'Georgia', cursive;
-  font-size: 26px;
+  font-family: 'Dancing Script', cursive;
+  font-size: 28px;
   background: linear-gradient(135deg, #FF8FB1, #C77DFF);
   -webkit-background-clip: text;
   background-clip: text;
@@ -291,7 +293,6 @@ body {
   font-style: italic;
 }
 
-/* Overlay */
 #overlay {
   position: fixed;
   top: 0;
@@ -310,7 +311,6 @@ body {
   pointer-events: all;
 }
 
-/* Petals */
 #petals {
   position: fixed;
   top: 0;
@@ -339,7 +339,6 @@ body {
 <div id="overlay"></div>
 <div id="petals"></div>
 
-<!-- GARDEN PHASE -->
 <div id="garden-phase">
   <canvas id="garden-canvas"></canvas>
   <div class="garden-title"><span>🌸 Flower Garden for You</span></div>
@@ -357,7 +356,6 @@ body {
   </div>
 </div>
 
-<!-- QUESTION PHASE -->
 <div id="question-phase">
   <div class="q-inner">
     <span class="q-emoji">💍</span>
@@ -372,7 +370,6 @@ body {
   </div>
 </div>
 
-<!-- LETTER PHASE -->
 <div id="letter-phase">
   <div class="letter-scroll">
     <div class="l-title">Happy 1 Year Anniversary<br>my love of life 🫶</div>
@@ -397,9 +394,6 @@ body {
 
 <script>
 (function() {
-  console.log('Script starting...');
-  
-  // Get elements
   const canvas = document.getElementById('garden-canvas');
   const ctx = canvas.getContext('2d');
   let width, height;
@@ -408,44 +402,37 @@ body {
   let autoBloom = false;
   let autoInterval = null;
   let animationTime = 0;
-  let lastTimestamp = 0;
   
-  const colors = ['#FF8FB1', '#FF6B9D', '#FF4D7E', '#C77DFF', '#9B5DE5', '#E0AAFF', '#FFD60A'];
+  // Beautiful colors for tulips
+  const tulipColors = ['#FF4D7E', '#FF8FB1', '#FF6B9D', '#C77DFF', '#E0AAFF', '#FF4D6D', '#FF0054', '#FFB347'];
   
   function resizeCanvas() {
     width = window.innerWidth;
     height = window.innerHeight;
     canvas.width = width;
     canvas.height = height;
-    canvas.style.width = width + 'px';
-    canvas.style.height = height + 'px';
-    console.log('Canvas size:', width, height);
   }
   
+  // Add flower with touch position
   function addFlower(x, y) {
-    if (flowerCount >= 60) {
-      console.log('Max flowers reached');
-      return;
-    }
+    if (flowerCount >= 50) return;
     
-    console.log('Adding flower at', x, y);
-    
-    const color = colors[Math.floor(Math.random() * colors.length)];
-    const size = 20 + Math.random() * 18;
+    // Adjust y to be at ground level
+    const groundY = height - 20;
     
     flowers.push({
       x: x,
-      y: y,
-      color: color,
-      size: size,
-      stemHeight: 50 + Math.random() * 90,
+      y: groundY,
+      color: tulipColors[Math.floor(Math.random() * tulipColors.length)],
+      size: 28 + Math.random() * 15,
+      stemHeight: 70 + Math.random() * 80,
       growth: 0,
-      type: Math.floor(Math.random() * 3)
+      swayOffset: Math.random() * Math.PI * 2,
+      swaySpeed: 0.6 + Math.random() * 0.8
     });
     
     flowerCount++;
-    const counter = document.getElementById('flower-counter');
-    if (counter) counter.innerHTML = '🌸 ' + flowerCount;
+    document.getElementById('flower-counter').innerHTML = '🌸 ' + flowerCount;
     
     const hintBox = document.getElementById('hintBox');
     if (flowerCount === 1 && hintBox) {
@@ -462,107 +449,141 @@ body {
   }
   
   function clearGarden() {
-    console.log('Clearing garden');
     flowers = [];
     flowerCount = 0;
-    const counter = document.getElementById('flower-counter');
-    if (counter) counter.innerHTML = '🌸 0';
+    document.getElementById('flower-counter').innerHTML = '🌸 0';
     const hintBox = document.getElementById('hintBox');
     if (hintBox) {
       hintBox.style.display = 'block';
       hintBox.style.opacity = '1';
     }
-    const continueWrap = document.getElementById('continue-wrap');
-    if (continueWrap) continueWrap.style.display = 'none';
+    document.getElementById('continue-wrap').style.display = 'none';
   }
   
-  function drawFlower(f) {
+  // Draw TULIP flower
+  function drawTulip(f) {
     if (f.growth <= 0) return;
     
     const growth = Math.min(1, f.growth);
     const currentStem = f.stemHeight * growth;
     const flowerY = f.y - currentStem;
-    const sway = Math.sin(animationTime * 2 + f.x * 0.01) * 3 * growth;
+    const sway = Math.sin(animationTime * f.swaySpeed + f.swayOffset) * 4 * growth;
     
-    // Stem
+    // Draw stem
     ctx.beginPath();
     ctx.moveTo(f.x, f.y);
-    ctx.lineTo(f.x + sway, flowerY);
-    ctx.strokeStyle = '#2A7A2A';
-    ctx.lineWidth = 2.5;
+    ctx.lineTo(f.x + sway * 0.5, flowerY);
+    ctx.strokeStyle = '#2A6B2A';
+    ctx.lineWidth = 3;
     ctx.stroke();
     
-    // Leaves
-    if (growth > 0.4) {
-      const leafProgress = Math.min(1, (growth - 0.4) / 0.6);
-      const midY = f.y - currentStem * 0.4;
-      ctx.fillStyle = '#3A8A3A';
+    // Draw leaves
+    if (growth > 0.3) {
+      const leafProgress = Math.min(1, (growth - 0.3) / 0.7);
+      const leafY1 = f.y - currentStem * 0.3;
+      const leafY2 = f.y - currentStem * 0.6;
+      
+      ctx.fillStyle = '#3A7A3A';
+      // Left leaf
       ctx.beginPath();
-      ctx.ellipse(f.x - 10 * leafProgress, midY, 7 * leafProgress, 3.5 * leafProgress, -0.3, 0, Math.PI * 2);
+      ctx.moveTo(f.x, leafY1);
+      ctx.quadraticCurveTo(f.x - 18 * leafProgress, leafY1 - 10 * leafProgress, f.x - 12 * leafProgress, leafY1 - 25 * leafProgress);
+      ctx.quadraticCurveTo(f.x - 5 * leafProgress, leafY1 - 15 * leafProgress, f.x, leafY1);
       ctx.fill();
+      
+      // Right leaf
       ctx.beginPath();
-      ctx.ellipse(f.x + 10 * leafProgress, midY, 7 * leafProgress, 3.5 * leafProgress, 0.3, 0, Math.PI * 2);
+      ctx.moveTo(f.x, leafY2);
+      ctx.quadraticCurveTo(f.x + 18 * leafProgress, leafY2 - 10 * leafProgress, f.x + 12 * leafProgress, leafY2 - 25 * leafProgress);
+      ctx.quadraticCurveTo(f.x + 5 * leafProgress, leafY2 - 15 * leafProgress, f.x, leafY2);
       ctx.fill();
     }
     
-    // Flower bloom
-    const bloomProgress = Math.min(1, Math.max(0, (growth - 0.5) / 0.5));
+    // Draw TULIP bloom
+    const bloomProgress = Math.min(1, Math.max(0, (growth - 0.4) / 0.6));
     if (bloomProgress > 0) {
       const currentSize = f.size * bloomProgress;
-      const petalCount = f.type === 1 ? 8 : 6;
+      const tulipX = f.x + sway * 0.5;
+      const tulipY = flowerY;
       
-      for (let i = 0; i < petalCount; i++) {
-        const angle = (i / petalCount) * Math.PI * 2;
-        const petalX = f.x + sway + Math.cos(angle) * currentSize * 0.55;
-        const petalY = flowerY + Math.sin(angle) * currentSize * 0.55;
-        
-        ctx.beginPath();
-        ctx.ellipse(petalX, petalY, currentSize * 0.3, currentSize * 0.45, angle, 0, Math.PI * 2);
-        ctx.fillStyle = f.color;
-        ctx.fill();
-      }
+      // Tulip bulb shape
+      ctx.beginPath();
+      ctx.moveTo(tulipX, tulipY - currentSize * 0.9);
+      ctx.quadraticCurveTo(tulipX - currentSize * 0.45, tulipY - currentSize * 0.2, tulipX - currentSize * 0.25, tulipY + currentSize * 0.1);
+      ctx.lineTo(tulipX + currentSize * 0.25, tulipY + currentSize * 0.1);
+      ctx.quadraticCurveTo(tulipX + currentSize * 0.45, tulipY - currentSize * 0.2, tulipX, tulipY - currentSize * 0.9);
+      ctx.fillStyle = f.color;
+      ctx.fill();
       
-      // Center
+      // Tulip petals (3 visible)
       ctx.beginPath();
-      ctx.arc(f.x + sway, flowerY, currentSize * 0.22, 0, Math.PI * 2);
-      ctx.fillStyle = '#FFD700';
+      ctx.moveTo(tulipX, tulipY - currentSize * 0.85);
+      ctx.quadraticCurveTo(tulipX - currentSize * 0.35, tulipY - currentSize * 0.4, tulipX - currentSize * 0.2, tulipY);
+      ctx.quadraticCurveTo(tulipX, tulipY - currentSize * 0.1, tulipX, tulipY - currentSize * 0.85);
+      ctx.fillStyle = f.color;
       ctx.fill();
+      
       ctx.beginPath();
-      ctx.arc(f.x + sway, flowerY, currentSize * 0.1, 0, Math.PI * 2);
-      ctx.fillStyle = '#FF8C00';
+      ctx.moveTo(tulipX, tulipY - currentSize * 0.85);
+      ctx.quadraticCurveTo(tulipX + currentSize * 0.35, tulipY - currentSize * 0.4, tulipX + currentSize * 0.2, tulipY);
+      ctx.quadraticCurveTo(tulipX, tulipY - currentSize * 0.1, tulipX, tulipY - currentSize * 0.85);
       ctx.fill();
+      
+      // Inner petal
+      ctx.beginPath();
+      ctx.moveTo(tulipX, tulipY - currentSize * 0.7);
+      ctx.quadraticCurveTo(tulipX, tulipY - currentSize * 0.2, tulipX, tulipY);
+      ctx.quadraticCurveTo(tulipX - currentSize * 0.1, tulipY - currentSize * 0.1, tulipX, tulipY - currentSize * 0.7);
+      ctx.fillStyle = 'rgba(255,255,255,0.3)';
+      ctx.fill();
+      
+      // Glow effect
+      ctx.shadowBlur = 15;
+      ctx.shadowColor = f.color;
+      ctx.beginPath();
+      ctx.arc(tulipX, tulipY - currentSize * 0.4, currentSize * 0.3, 0, Math.PI * 2);
+      ctx.fillStyle = f.color + '20';
+      ctx.fill();
+      ctx.shadowBlur = 0;
     }
   }
   
-  function animate(currentTime) {
+  function animate() {
     if (!ctx) return;
-    
-    requestAnimationFrame(animate);
     ctx.clearRect(0, 0, width, height);
     animationTime += 0.033;
     
-    let hasActive = false;
-    for (let i = 0; i < flowers.length; i++) {
-      if (flowers[i].growth < 1) {
-        flowers[i].growth += 0.025;
-        hasActive = true;
-      }
-      drawFlower(flowers[i]);
+    // Draw grass effect
+    ctx.fillStyle = '#0A1A0A';
+    ctx.fillRect(0, height - 15, width, 15);
+    ctx.fillStyle = '#1A2A1A';
+    for(let i = 0; i < 20; i++) {
+      ctx.beginPath();
+      ctx.moveTo(i * 50, height - 15);
+      ctx.lineTo(i * 50 + 15, height - 30);
+      ctx.lineTo(i * 50 - 15, height - 30);
+      ctx.fill();
     }
     
-    // Clean up old flowers
-    if (flowers.length > 70) {
-      const oldFlowers = flowers.filter(f => f.growth >= 1);
-      if (oldFlowers.length > 10) {
-        flowers = flowers.slice(-60);
-        flowerCount = flowers.length;
-        const counter = document.getElementById('flower-counter');
-        if (counter) counter.innerHTML = '🌸 ' + flowerCount;
+    // Update and draw flowers
+    for (let i = 0; i < flowers.length; i++) {
+      if (flowers[i].growth < 1) {
+        flowers[i].growth += 0.018;
       }
+      drawTulip(flowers[i]);
     }
+    
+    // Limit max flowers
+    if (flowers.length > 60) {
+      flowers = flowers.slice(-50);
+      flowerCount = flowers.length;
+      document.getElementById('flower-counter').innerHTML = '🌸 ' + flowerCount;
+    }
+    
+    requestAnimationFrame(animate);
   }
   
-  // Touch handlers
+  // TOUCH HANDLERS - FIXED FOR CHROME ANDROID
   function handleCanvasTap(e) {
     e.preventDefault();
     e.stopPropagation();
@@ -582,85 +603,75 @@ body {
     return false;
   }
   
-  // Initialize everything when DOM is ready
   function init() {
-    console.log('Initializing...');
     resizeCanvas();
     
     // Canvas events
     canvas.addEventListener('click', handleCanvasTap);
     canvas.addEventListener('touchstart', handleCanvasTap, { passive: false });
+    canvas.addEventListener('touchmove', function(e) { e.preventDefault(); }, { passive: false });
     
-    // Buttons
+    // Clear button
     const clearBtn = document.getElementById('clearBtn');
+    clearBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      clearGarden();
+    });
+    clearBtn.addEventListener('touchstart', function(e) {
+      e.stopPropagation();
+      clearGarden();
+    });
+    
+    // Auto bloom button
     const autoBtn = document.getElementById('autoBtn');
-    const continueBtn = document.getElementById('continueBtn');
-    
-    if (clearBtn) {
-      clearBtn.onclick = function(e) {
-        e.stopPropagation();
-        clearGarden();
-      };
-      clearBtn.ontouchstart = function(e) {
-        e.stopPropagation();
-        clearGarden();
-      };
-    }
-    
-    if (autoBtn) {
-      autoBtn.onclick = function(e) {
-        e.stopPropagation();
-        autoBloom = !autoBloom;
-        if (autoBloom) {
-          autoBtn.classList.add('on');
-          if (autoInterval) clearInterval(autoInterval);
-          autoInterval = setInterval(() => {
-            if (flowerCount < 50 && width) {
-              const x = 40 + Math.random() * (width - 80);
-              const y = height - 30;
-              addFlower(x, y);
-            }
-          }, 700);
-        } else {
-          autoBtn.classList.remove('on');
-          if (autoInterval) {
-            clearInterval(autoInterval);
-            autoInterval = null;
+    autoBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      autoBloom = !autoBloom;
+      if (autoBloom) {
+        autoBtn.classList.add('on');
+        if (autoInterval) clearInterval(autoInterval);
+        autoInterval = setInterval(() => {
+          if (flowerCount < 50 && width) {
+            const x = 40 + Math.random() * (width - 80);
+            addFlower(x, height - 20);
           }
+        }, 600);
+      } else {
+        autoBtn.classList.remove('on');
+        if (autoInterval) {
+          clearInterval(autoInterval);
+          autoInterval = null;
         }
-      };
-      autoBtn.ontouchstart = function(e) {
-        e.stopPropagation();
-        autoBtn.onclick(e);
-      };
-    }
+      }
+    });
+    autoBtn.addEventListener('touchstart', function(e) {
+      e.stopPropagation();
+      autoBtn.click();
+    });
     
-    if (continueBtn) {
-      continueBtn.onclick = function(e) {
-        e.stopPropagation();
-        document.getElementById('overlay').classList.add('show');
-        setTimeout(() => {
-          document.getElementById('garden-phase').style.display = 'none';
-          document.getElementById('question-phase').style.display = 'flex';
-          document.getElementById('overlay').classList.remove('show');
-        }, 500);
-      };
-      continueBtn.ontouchstart = function(e) {
-        e.stopPropagation();
-        continueBtn.onclick(e);
-      };
-    }
+    // Continue button
+    const continueBtn = document.getElementById('continueBtn');
+    continueBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      document.getElementById('overlay').classList.add('show');
+      setTimeout(() => {
+        document.getElementById('garden-phase').style.display = 'none';
+        document.getElementById('question-phase').style.display = 'flex';
+        document.getElementById('overlay').classList.remove('show');
+      }, 500);
+    });
+    continueBtn.addEventListener('touchstart', function(e) {
+      e.stopPropagation();
+      continueBtn.click();
+    });
     
-    // Start animation
-    requestAnimationFrame(animate);
-    
-    // Resize handler
+    // Resize
     window.addEventListener('resize', resizeCanvas);
     window.addEventListener('orientationchange', function() {
       setTimeout(resizeCanvas, 100);
     });
     
-    console.log('Ready! Tap the screen to add flowers');
+    animate();
   }
   
   // Question handlers
@@ -673,7 +684,7 @@ body {
     };
     
     document.querySelectorAll('.opt').forEach(btn => {
-      btn.onclick = function() {
+      btn.addEventListener('click', function() {
         const answer = this.getAttribute('data-answer');
         const qInner = document.querySelector('.q-inner');
         qInner.innerHTML = `
@@ -691,11 +702,11 @@ body {
             startPetals();
           }, 500);
         }, 1500);
-      };
-      btn.ontouchstart = function(e) {
+      });
+      btn.addEventListener('touchstart', function(e) {
         e.preventDefault();
-        this.onclick();
-      };
+        this.click();
+      });
     });
   }
   
@@ -704,7 +715,7 @@ body {
     setInterval(() => {
       const petal = document.createElement('div');
       petal.className = 'petal';
-      petal.innerHTML = ['🌸', '🌺', '🌸', '🌼', '💕'][Math.floor(Math.random() * 5)];
+      petal.innerHTML = ['🌸', '🌷', '🌸', '🌼', '💕', '🌷'][Math.floor(Math.random() * 6)];
       petal.style.left = Math.random() * 100 + '%';
       petal.style.fontSize = (12 + Math.random() * 20) + 'px';
       petal.style.animationDuration = (3 + Math.random() * 5) + 's';
@@ -715,10 +726,6 @@ body {
     }, 350);
   }
   
-  // Start everything
   init();
   setupQuestion();
-})();
-</script>
-</body>
-  </html>
+})()
