@@ -3,488 +3,505 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<title>Happy 1 Year 🌸</title>
-<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Crimson+Pro:ital,wght@0,300;0,400;1,300;1,400&family=Cormorant+Garamond:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
+<title>Happy 1 Year My Love 🌷</title>
 <style>
-* { margin:0; padding:0; box-sizing:border-box; }
-html, body {
-  width:100%; height:100%;
-  background:#000;
-  overflow:hidden;
-  font-family:'Crimson Pro',serif;
-  -webkit-tap-highlight-color:transparent;
-  user-select:none; -webkit-user-select:none;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  user-select: none;
 }
 
-/* Canvas sits at bottom */
-#garden-canvas {
-  position:fixed; top:0; left:0;
-  width:100%; height:100%;
-  z-index:1; display:block;
-  pointer-events:none; /* canvas never intercepts — tap-zone does */
+body {
+  background: linear-gradient(135deg, #0a0a2a, #1a0a2a);
+  min-height: 100vh;
+  font-family: 'Georgia', serif;
+  padding: 20px;
 }
 
-/* TAP ZONE — transparent, full screen, catches ALL touches */
-#tap-zone {
-  position:fixed; top:0; left:0;
-  width:100%; height:100%;
-  z-index:5;
-  background:transparent;
-  touch-action:none;
-  cursor:crosshair;
+/* Garden Grid */
+.garden {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  max-width: 400px;
+  margin: 80px auto;
 }
 
-/* Labels */
-#garden-label {
-  position:fixed; top:20px; left:20px; z-index:20;
-  font-family:'Dancing Script',cursive;
-  font-size:15px; color:rgba(255,180,210,0.55);
-  pointer-events:none;
-}
-#flower-counter {
-  position:fixed; top:18px; right:20px; z-index:20;
-  font-size:13px; color:rgba(255,180,210,0.45);
-  font-style:italic; pointer-events:none;
-}
-
-/* Hint */
-#hint-box {
-  position:fixed; top:50%; left:50%;
-  transform:translate(-50%,-50%);
-  text-align:center; z-index:20;
-  pointer-events:none;
-  transition:opacity 1s ease;
-}
-#hint-box .h1 {
-  font-family:'Dancing Script',cursive;
-  font-size:32px; color:#FF8FB1;
-  text-shadow:0 0 30px rgba(255,143,177,0.4);
-  animation:floatUp 3s ease-in-out infinite;
-  display:block;
-}
-#hint-box .h2 {
-  display:block; font-size:13px;
-  color:rgba(255,255,255,0.4);
-  margin-top:8px; font-style:italic;
-}
-@keyframes floatUp {
-  0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)}
+.flower-pot {
+  aspect-ratio: 1;
+  background: rgba(255,255,255,0.05);
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: 2px solid rgba(255,143,177,0.2);
+  touch-action: manipulation;
 }
 
-/* Garden buttons — z-index above tap-zone so they work */
-#garden-btns {
-  position:fixed; bottom:40px; left:50%;
-  transform:translateX(-50%);
-  display:flex; gap:14px; z-index:30;
-}
-.gbtn {
-  padding:12px 26px;
-  border-radius:999px;
-  border:1px solid rgba(255,255,255,0.22);
-  background:rgba(40,40,40,0.85);
-  color:rgba(255,255,255,0.85);
-  font-family:'Crimson Pro',serif;
-  font-size:14px; line-height:1;
-  cursor:pointer;
-  -webkit-appearance:none; appearance:none; outline:none;
-  white-space:nowrap;
-  touch-action:manipulation;
-}
-.gbtn:active { background:rgba(80,80,80,0.9); }
-#autoBtn {
-  background:rgba(80,35,5,0.85);
-  border-color:rgba(255,140,60,0.35);
-  color:#FFD0A0;
-}
-#autoBtn.on {
-  background:rgba(160,55,5,0.9);
-  color:#FFE8C0;
-  box-shadow:0 0 16px rgba(255,110,40,0.35);
+.flower-pot:active {
+  transform: scale(0.95);
+  background: rgba(255,143,177,0.1);
+  border-color: #FF8FB1;
 }
 
-/* Continue button */
-#continue-wrap {
-  position:fixed; bottom:108px; left:50%;
-  transform:translateX(-50%);
-  z-index:30; display:none; text-align:center;
-}
-#continue-btn {
-  padding:16px 36px;
-  background:linear-gradient(135deg,#FF4D7E,#C77DFF);
-  border:none; border-radius:999px;
-  color:#fff; font-family:'Dancing Script',cursive; font-size:19px;
-  cursor:pointer; outline:none;
-  -webkit-appearance:none; appearance:none; line-height:1.3;
-  animation:btnPulse 2.2s ease-in-out infinite;
-  white-space:nowrap;
-  touch-action:manipulation;
-}
-#continue-btn small {
-  display:block; font-family:'Crimson Pro',serif;
-  font-size:12px; opacity:.7; font-style:italic; margin-top:3px;
-}
-@keyframes btnPulse {
-  0%,100%{box-shadow:0 0 35px rgba(255,77,126,.4);transform:scale(1)}
-  50%{box-shadow:0 0 60px rgba(255,77,126,.65);transform:scale(1.04)}
+.flower-emoji {
+  font-size: 50px;
+  transition: all 0.3s;
 }
 
-/* ── QUESTION ── */
-#question-phase {
-  position:fixed; inset:0;
-  display:none; align-items:center; justify-content:center;
-  z-index:100; background:rgba(0,0,0,0.82);
-  backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px);
+.flower-name {
+  margin-top: 10px;
+  color: rgba(255,255,255,0.5);
+  font-size: 12px;
 }
-.q-box {
-  text-align:center; padding:16px 24px 38px;
-  max-width:360px; width:90%;
-  animation:popIn .55s cubic-bezier(.34,1.56,.64,1) both;
-}
-@keyframes popIn {
-  from{opacity:0;transform:scale(.82) translateY(24px)}
-  to{opacity:1;transform:scale(1) translateY(0)}
-}
-.q-emoji { font-size:46px; display:block; margin-bottom:14px; }
-.q-title {
-  font-family:'Dancing Script',cursive; font-size:26px;
-  color:#fff; line-height:1.45; margin-bottom:6px;
-  text-shadow:0 0 25px rgba(255,143,177,0.4);
-}
-.q-sub {
-  font-size:13px; font-style:italic;
-  color:rgba(255,200,220,0.5); margin-bottom:30px;
-}
-.yn-wrap { display:flex; gap:18px; justify-content:center; }
-.yn-btn {
-  padding:15px 0; width:128px;
-  border-radius:999px; border:none;
-  font-family:'Dancing Script',cursive; font-size:22px;
-  cursor:pointer; outline:none;
-  -webkit-appearance:none; appearance:none;
-  touch-action:manipulation;
-  transition:transform .15s;
-}
-#btn-yes {
-  background:linear-gradient(135deg,#FF4D7E,#C77DFF);
-  color:#fff; box-shadow:0 0 28px rgba(255,77,126,0.45);
-}
-#btn-no {
-  background:rgba(50,50,50,0.9);
-  border:1px solid rgba(255,255,255,0.2) !important;
-  color:rgba(255,255,255,0.65);
-}
-#btn-yes:active,#btn-no:active { transform:scale(0.93); }
 
-/* ── LETTER ── */
-#letter-phase {
-  position:fixed; inset:0;
-  display:none; overflow-y:auto; overflow-x:hidden;
-  z-index:200; background:#000;
-  -webkit-overflow-scrolling:touch;
+.pot-grown .flower-emoji {
+  animation: bounce 0.3s ease;
 }
-#letter-bg {
-  position:fixed; inset:0; z-index:0; pointer-events:none;
-  background:
-    radial-gradient(ellipse 80% 55% at 15% 100%,rgba(110,0,55,.38) 0%,transparent 60%),
-    radial-gradient(ellipse 65% 50% at 85% 0%,rgba(55,0,80,.32) 0%,transparent 60%),
-    #000;
-}
-#letter-canvas { position:fixed; inset:0; z-index:1; pointer-events:none; }
-.letter-scroll {
-  position:relative; z-index:10;
-  max-width:500px; margin:0 auto;
-  padding:60px 26px 100px;
-  opacity:0; animation:riseIn 1.4s ease forwards .3s;
-}
-@keyframes riseIn {
-  from{opacity:0;transform:translateY(36px)} to{opacity:1;transform:translateY(0)}
-}
-.l-eyebrow {
-  display:block; text-align:center;
-  font-family:'Cormorant Garamond',serif;
-  font-size:10px; letter-spacing:5px;
-  text-transform:uppercase; color:rgba(255,143,177,.5); margin-bottom:16px;
-}
-.l-title {
-  text-align:center;
-  font-family:'Dancing Script',cursive; font-size:34px;
-  background:linear-gradient(135deg,#FF8FB1,#E0AAFF,#FFD6A0);
-  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
-  background-clip:text; line-height:1.35; margin-bottom:12px;
-}
-.l-kaomoji { display:block; text-align:center; font-size:20px; color:rgba(255,200,220,.65); margin-bottom:22px; }
-.l-rule { width:70px; height:1px; margin:0 auto 44px; background:linear-gradient(90deg,transparent,rgba(255,143,177,.4),transparent); }
-.letter-body { font-size:17px; line-height:1.95; color:rgba(255,245,250,.87); }
-.para { margin-bottom:26px; opacity:0; animation:fadeUp .8s ease forwards; }
-.para:nth-child(1){animation-delay:.7s}.para:nth-child(2){animation-delay:1.0s}
-.para:nth-child(3){animation-delay:1.3s}.para:nth-child(4){animation-delay:1.6s}
-.para:nth-child(5){animation-delay:1.9s}.para:nth-child(6){animation-delay:2.2s}
-.para:nth-child(7){animation-delay:2.5s}.para:nth-child(8){animation-delay:2.8s}
-.para:nth-child(9){animation-delay:3.1s}.para:nth-child(10){animation-delay:3.4s}
-.para:nth-child(11){animation-delay:3.7s}
-@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
-.divider { text-align:center; color:rgba(255,143,177,.3); letter-spacing:10px; font-size:16px; margin:28px 0; }
-.pk { color:#FF8FB1; font-style:italic; }
-.pu { color:#D4AAFF; font-style:italic; }
-.letter-footer { text-align:center; margin-top:50px; opacity:0; animation:fadeUp 1s ease forwards 4.1s; }
-.forever {
-  display:block; font-family:'Dancing Script',cursive; font-size:28px;
-  background:linear-gradient(135deg,#FF8FB1,#C77DFF);
-  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
-  background-clip:text; margin-bottom:14px;
-}
-.sign { font-family:'Cormorant Garamond',serif; font-style:italic; color:rgba(255,200,220,.45); font-size:14px; }
-.footer-kaomoji { font-size:26px; display:block; margin:18px 0 6px; }
 
-/* ── EVIL ── */
-#evil-phase {
-  position:fixed; inset:0;
-  display:none; align-items:center; justify-content:center;
-  z-index:200; background:#060000; overflow:hidden;
+@keyframes bounce {
+  0%,100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
 }
-.evil-bg {
-  position:absolute; inset:0; pointer-events:none;
-  background:radial-gradient(ellipse 60% 60% at 50% 50%,rgba(130,0,0,.55) 0%,transparent 70%);
-  animation:evilPulse 1.8s ease-in-out infinite;
-}
-@keyframes evilPulse { 0%,100%{opacity:.7} 50%{opacity:1} }
-.evil-content {
-  text-align:center; position:relative; z-index:10; padding:24px;
-  animation:evilIn .6s cubic-bezier(.34,1.56,.64,1) both;
-}
-@keyframes evilIn { from{opacity:0;transform:scale(.6)} to{opacity:1;transform:scale(1)} }
-.evil-eyes { font-size:56px; display:block; margin-bottom:12px; animation:eyeShake .4s ease-in-out infinite; }
-@keyframes eyeShake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-4px)} 75%{transform:translateX(4px)} }
-.evil-mouth { font-size:44px; display:block; margin-bottom:18px; }
-.evil-text {
-  font-family:'Dancing Script',cursive; font-size:28px;
-  color:#FF2222; line-height:1.4; display:block; margin-bottom:14px;
-  text-shadow:0 0 20px rgba(255,0,0,.7),0 0 60px rgba(200,0,0,.4);
-  animation:glitch 2s infinite;
-}
-@keyframes glitch {
-  0%,90%,100%{text-shadow:0 0 20px rgba(255,0,0,.7),0 0 60px rgba(200,0,0,.4);transform:translate(0)}
-  92%{text-shadow:-2px 0 #ff0080,2px 0 #00ffff;transform:translate(-2px,1px)}
-  94%{text-shadow:2px 0 #ff0080,-2px 0 #00ffff;transform:translate(2px,-1px)}
-  96%{text-shadow:-2px 0 #ff0080,2px 0 #00ffff;transform:translate(-1px,0)}
-}
-.evil-sub { font-size:15px; color:rgba(255,100,100,.6); font-style:italic; margin-bottom:28px; display:block; }
-#evil-retry {
-  display:inline-block; padding:13px 32px;
-  background:rgba(255,0,0,.15);
-  border:1px solid rgba(255,60,60,.35) !important;
-  border-radius:999px; color:rgba(255,150,150,.9);
-  font-family:'Crimson Pro',serif; font-size:15px;
-  cursor:pointer; outline:none;
-  -webkit-appearance:none; appearance:none;
-  touch-action:manipulation;
-}
-#evil-retry:active { background:rgba(255,0,0,.3); }
 
-/* Petals */
-.petal { position:fixed; pointer-events:none; z-index:5; animation:petalFall linear forwards; }
-@keyframes petalFall {
-  from{transform:translateY(-20px) rotate(0deg);opacity:.7}
-  to{transform:translateY(110vh) rotate(540deg);opacity:0}
+.title {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.title h1 {
+  font-family: 'Georgia', cursive;
+  color: #FF8FB1;
+  font-size: 28px;
+}
+
+.title p {
+  color: rgba(255,255,255,0.5);
+  margin-top: 10px;
+}
+
+.counter {
+  text-align: center;
+  font-size: 24px;
+  color: #FF8FB1;
+  margin: 20px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin: 20px;
+}
+
+button {
+  padding: 12px 25px;
+  border-radius: 40px;
+  border: none;
+  background: rgba(255,255,255,0.1);
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  touch-action: manipulation;
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+.continue-btn {
+  background: linear-gradient(135deg, #FF4D7E, #C77DFF);
+  display: none;
+  margin: 20px auto;
+  padding: 15px 40px;
+  font-size: 18px;
+}
+
+/* Question Modal */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.95);
+  backdrop-filter: blur(10px);
+  z-index: 100;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-card {
+  background: rgba(255,255,255,0.05);
+  border-radius: 50px;
+  padding: 35px 25px;
+  max-width: 350px;
+  width: 85%;
+  text-align: center;
+  border: 1px solid rgba(255,143,177,0.3);
+}
+
+.modal-card h2 {
+  color: #FF8FB1;
+  font-family: 'Georgia', cursive;
+  font-size: 28px;
+  margin: 15px 0;
+}
+
+.modal-card p {
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 25px;
+}
+
+.option {
+  display: block;
+  width: 100%;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,143,177,0.2);
+  border-radius: 40px;
+  padding: 12px;
+  margin: 8px 0;
+  color: white;
+  text-align: center;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.option:active {
+  background: rgba(255,77,126,0.3);
+}
+
+/* Letter */
+.letter {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #0a0a1a;
+  z-index: 200;
+  display: none;
+  overflow-y: auto;
+  padding: 50px 25px;
+}
+
+.letter-content {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.letter-content h1 {
+  font-family: 'Georgia', cursive;
+  font-size: 36px;
+  text-align: center;
+  background: linear-gradient(135deg, #FF8FB1, #C77DFF);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin: 20px 0;
+}
+
+.letter-content p {
+  color: rgba(255,255,255,0.85);
+  line-height: 1.8;
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+.signature {
+  text-align: center;
+  margin-top: 40px;
+  color: #FF8FB1;
+  font-style: italic;
 }
 
 /* Overlay */
-#overlay {
-  position:fixed; inset:0; background:#000;
-  z-index:500; pointer-events:none; opacity:0;
-  transition:opacity .65s ease;
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: black;
+  z-index: 300;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s;
 }
-#overlay.show { opacity:1; pointer-events:all; }
+
+.overlay.show {
+  opacity: 1;
+  pointer-events: all;
+}
 </style>
 </head>
 <body>
 
-<div id="overlay"></div>
+<div class="overlay" id="overlay"></div>
 
-<!-- PHASE 1: GARDEN -->
-<canvas id="garden-canvas"></canvas>
-
-<!-- THIS IS THE KEY FIX: transparent div captures all taps -->
-<div id="tap-zone"></div>
-
-<div id="garden-label">🌸 Flower Garden for You</div>
-<div id="flower-counter">🌸 0</div>
-
-<div id="hint-box">
-  <span class="h1">Tap anywhere to bloom 🌺</span>
-  <span class="h2">✨ or turn on Auto Bloom below</span>
+<div class="title">
+  <h1>🌷 Flower Garden for You 🌻</h1>
+  <p>Tap any pot to grow a flower</p>
 </div>
 
-<div id="garden-btns">
-  <button class="gbtn" id="clearBtn">🌱 Clear Garden</button>
-  <button class="gbtn" id="autoBtn">✨ Auto Bloom</button>
+<div class="counter" id="counter">🌸 0 / 9</div>
+
+<div class="garden" id="garden">
+  <!-- 9 flower pots -->
 </div>
 
-<div id="continue-wrap">
-  <button id="continue-btn">
-    Continue to something special 💌
-    <small>tap when your garden is ready</small>
-  </button>
+<div class="buttons">
+  <button id="clearBtn">🌱 Clear Garden</button>
+  <button id="autoBtn">✨ Auto Bloom</button>
 </div>
 
-<!-- PHASE 2: QUESTION -->
-<div id="question-phase">
-  <div class="q-box">
-    <span class="q-emoji">💍</span>
-    <div class="q-title">What will you do<br>if I propose you?</div>
-    <div class="q-sub">take ur time… I'm totally calm 🥺</div>
-    <div class="yn-wrap">
-      <button class="yn-btn" id="btn-yes">Yes 💍</button>
-      <button class="yn-btn" id="btn-no">No 🙂</button>
-    </div>
+<button class="continue-btn" id="continueBtn">💌 Continue to Surprise 💌</button>
+
+<!-- Question Modal -->
+<div class="modal" id="questionModal">
+  <div class="modal-card">
+    <span style="font-size: 50px;">💍</span>
+    <h2>What will you do if I propose you?</h2>
+    <p>take your time... I'm totally calm 🥺</p>
+    <div id="optionsContainer"></div>
   </div>
 </div>
 
-<!-- PHASE 3a: LETTER -->
-<div id="letter-phase">
-  <div id="letter-bg"></div>
-  <canvas id="letter-canvas"></canvas>
-  <div class="letter-scroll">
-    <span class="l-eyebrow">✦ one whole year ✦</span>
-    <div class="l-title">Happy 1 Year Anniversary<br>my love of life 🫶</div>
-    <span class="l-kaomoji">(づ￣ ³￣)づ</span>
-    <div class="l-rule"></div>
-    <div class="letter-body">
-      <p class="para">A whole year of us…</p>
-      <p class="para">nd when I look back i don't just see the happy moments — I see <span class="pk">everything.</span><br><br>
-      I see the late-night talks, the random little things that made us smile, the way u call me ur baby nd treat me like ur chotu bcha 😽😽😽</p>
-      <p class="para">The way u always try to understand me even when I don't know how to explain myself.</p>
-      <p class="para">I see every misunderstanding, every time we both overthought, every time we got hurt, cried, got scared, thought too much — nd still somehow <span class="pk">found our way back to each other.</span></p>
-      <p class="para">We were never perfect. But maybe that's why this feels so real. Cuz no matter how difficult it got, no matter how many times we both got scared of losing each other — we still stayed. <span class="pu">u stayed too.</span></p>
-      <div class="divider">· · ·</div>
-      <p class="para">U have loved me in ways nobody ever has.</p>
-      <p class="para">U made me feel seen, important, cared for nd safe. Even when u were hurting, u still thought about me first. Even when u felt like u were "too much" — all I ever saw was a girl with the <span class="pk">softest, most sensitive heart</span> who loves so deeply that sometimes it scares her, yet still holds pure love 👉👈</p>
-      <p class="para">Nd Ik I'm not easy either. Ik I overthink, go quiet, get hurt nd sometimes say the wrong things. But through all of that — <span class="pu">u still chose me.</span></p>
-      <div class="divider">· · ·</div>
-      <p class="para">Thank u for every <span class="pk">"I love us"</span> 🤭<br><br>
-      Every reassurance. Every time u stayed instead of giving up. Every time u reminded me that we're on the same side.</p>
-      <p class="para">I don't want a perfect love story. <span class="pu">I want this one.</span><br><br>
-      I want YOU — exactly as u are — for every year after this too.<br><br>
-      For every lifetime (づ｡◕‿‿◕｡)づ</p>
+<!-- Letter -->
+<div class="letter" id="letterModal">
+  <div class="letter-content">
+    <h1>Happy 1 Year Anniversary<br>my love of life 🫶</h1>
+    
+    <p>A whole year of us…</p>
+    
+    <p>And when I look back I don't just see the happy moments — I see <span style="color:#FF8FB1">everything.</span> I see the late-night talks, the random little things that made us smile, the way you call me your baby and treat me like your chotu bcha 😽😽😽</p>
+    
+    <p>The way you always try to understand me even when I don't know how to explain myself.</p>
+    
+    <p>I see every misunderstanding, every time we both overthought, every time we got hurt, cried, got scared, thought too much — and still somehow <span style="color:#FF8FB1">found our way back to each other.</span></p>
+    
+    <p>We were never perfect. But maybe that's why this feels so real. Cuz no matter how difficult it got, no matter how many times we both got scared of losing each other — we still stayed. <span style="color:#D4AAFF">You stayed too.</span></p>
+    
+    <p>You have loved me in ways nobody ever has. You made me feel seen, important, cared for and safe. Even when you were hurting, you still thought about me first. Even when you felt like you were "too much" — all I ever saw was a girl with the <span style="color:#FF8FB1">softest, most sensitive heart</span> who loves so deeply that sometimes it scares her, yet still holds pure love 👉👈</p>
+    
+    <p>And I know I'm not easy either. I know I overthink, go quiet, get hurt and sometimes say the wrong things. But through all of that — <span style="color:#D4AAFF">you still chose me.</span></p>
+    
+    <p>Thank you for every <span style="color:#FF8FB1">"I love us"</span> 🤭 Every reassurance. Every time you stayed instead of giving up. Every time you reminded me that we're on the same side.</p>
+    
+    <p>I don't want a perfect love story. <span style="color:#D4AAFF">I want this one.</span> I want YOU — exactly as you are — for every year after this too.</p>
+    
+    <p>For every lifetime <span style="color:#FF8FB1">(づ｡◕‿‿◕｡)づ</span></p>
+    
+    <div class="signature">
+      — with all my love, always 💕
     </div>
-    <div class="letter-footer">
-      <span class="footer-kaomoji">🌸💕🌸</span>
-      <span class="forever">For every year. For every lifetime.</span>
-      <span class="sign">— with all my love, always 💕</span>
-    </div>
-  </div>
-</div>
-
-<!-- PHASE 3b: EVIL -->
-<div id="evil-phase">
-  <div class="evil-bg"></div>
-  <div class="evil-content">
-    <span class="evil-eyes">👁️👁️</span>
-    <span class="evil-mouth">👅</span>
-    <span class="evil-text">blehhhhhhhhhhhh 👁️👅👁️</span>
-    <span class="evil-sub">wrong answer bestie… try again 😈</span>
-    <button id="evil-retry">okay okay fine… go back 💀</button>
   </div>
 </div>
 
 <script>
-/* ─── CANVAS SETUP ─── */
-const canvas = document.getElementById('garden-canvas');
-const ctx    = canvas.getContext('2d');
-let W = canvas.width  = window.innerWidth;
-let H = canvas.height = window.innerHeight;
-window.addEventListener('resize', ()=>{
-  W = canvas.width  = window.innerWidth;
-  H = canvas.height = window.innerHeight;
-});
+// Flower types
+const flowers = ['🌷', '🌻', '🌸', '🌺', '🌼', '💐'];
+const flowerNames = ['Tulip', 'Sunflower', 'Cherry', 'Hibiscus', 'Daisy', 'Bouquet'];
 
-const easeOut = t => 1 - Math.pow(1-t, 3);
-const COLORS = ['#FF8FB1','#FF6B9D','#FF4D7E','#C77DFF','#9B5DE5','#E0AAFF','#FFD60A','#FF85A1'];
-const TYPES  = ['cosmos','daisy','heart','tulip','tulip','cosmos','tulip','star'];
+let grownCount = 0;
+let autoMode = false;
+let autoInterval = null;
 
-/* ─── FLOWER ─── */
-class Flower {
-  constructor(x) {
-    this.x=x; this.stemH=75+Math.random()*130;
-    this.type=TYPES[Math.floor(Math.random()*TYPES.length)];
-    this.color=COLORS[Math.floor(Math.random()*COLORS.length)];
-    this.ps=15+Math.random()*20;
-    this.swayAmp=3+Math.random()*6; this.swaySpeed=0.4+Math.random()*0.7;
-    this.swayPh=Math.random()*Math.PI*2; this.swayMid=(Math.random()-.5)*28;
-    this.stemP=0; this.bloomP=0; this.done=false;
-    this.leaves=Array.from({length:Math.floor(Math.random()*2)+1},()=>({
-      t:.25+Math.random()*.45, side:Math.random()>.5?1:-1, sz:7+Math.random()*8, p:0
-    }));
-    this.sparks=[];
+// Create garden pots
+const garden = document.getElementById('garden');
+const potStates = new Array(9).fill(false);
+
+function createGarden() {
+  garden.innerHTML = '';
+  for (let i = 0; i < 9; i++) {
+    const pot = document.createElement('div');
+    pot.className = 'flower-pot';
+    pot.setAttribute('data-index', i);
+    
+    const randomFlower = flowers[Math.floor(Math.random() * flowers.length)];
+    const randomName = flowerNames[Math.floor(Math.random() * flowerNames.length)];
+    
+    pot.innerHTML = `
+      <div class="flower-emoji">🌱</div>
+      <div class="flower-name">Empty Pot</div>
+    `;
+    
+    pot.onclick = () => growFlower(i);
+    pot.ontouchstart = (e) => {
+      e.preventDefault();
+      growFlower(i);
+    };
+    
+    garden.appendChild(pot);
   }
-  tip(t,time){
-    const sw=Math.sin(time*this.swaySpeed+this.swayPh)*this.swayAmp;
-    return{x:this.x+this.swayMid*t+sw*t, y:H-this.stemH*t};
+}
+
+function growFlower(index) {
+  if (potStates[index]) return;
+  if (grownCount >= 9) return;
+  
+  potStates[index] = true;
+  grownCount++;
+  
+  const randomFlower = flowers[Math.floor(Math.random() * flowers.length)];
+  const randomName = flowerNames[Math.floor(Math.random() * flowerNames.length)];
+  
+  const pot = garden.children[index];
+  pot.classList.add('pot-grown');
+  pot.innerHTML = `
+    <div class="flower-emoji">${randomFlower}</div>
+    <div class="flower-name">${randomName}</div>
+  `;
+  
+  document.getElementById('counter').innerHTML = `🌸 ${grownCount} / 9`;
+  
+  // Show continue button when all flowers grown
+  if (grownCount === 9) {
+    document.getElementById('continueBtn').style.display = 'block';
+    createConfetti();
   }
-  update(dt,time){
-    if(this.stemP<1){this.stemP=Math.min(1,this.stemP+dt*1.3);}
-    else if(this.bloomP<1){
-      this.bloomP=Math.min(1,this.bloomP+dt*1.6);
-      if(Math.random()<.3){
-        const p=this.tip(1,time);
-        this.sparks.push({x:p.x+(Math.random()-.5)*32,y:p.y+(Math.random()-.5)*22,
-          vx:(Math.random()-.5)*1.8,vy:-Math.random()*2.4,life:1,sz:Math.random()*2.8+.8});
+}
+
+function clearGarden() {
+  for (let i = 0; i < 9; i++) {
+    potStates[i] = false;
+  }
+  grownCount = 0;
+  document.getElementById('counter').innerHTML = `🌸 0 / 9`;
+  document.getElementById('continueBtn').style.display = 'none';
+  createGarden();
+}
+
+function autoBloom() {
+  autoMode = !autoMode;
+  const btn = document.getElementById('autoBtn');
+  if (autoMode) {
+    btn.style.background = '#FF8FB1';
+    autoInterval = setInterval(() => {
+      if (grownCount < 9) {
+        const emptyPots = [];
+        for (let i = 0; i < 9; i++) {
+          if (!potStates[i]) emptyPots.push(i);
+        }
+        if (emptyPots.length > 0) {
+          const randomPot = emptyPots[Math.floor(Math.random() * emptyPots.length)];
+          growFlower(randomPot);
+        }
+      } else {
+        clearInterval(autoInterval);
+        autoMode = false;
+        btn.style.background = 'rgba(255,255,255,0.1)';
       }
-    } else {this.done=true;}
-    this.leaves.forEach(l=>{if(this.stemP>l.t)l.p=Math.min(1,l.p+dt*2.5);});
-    this.sparks=this.sparks.filter(s=>s.life>0);
-    this.sparks.forEach(s=>{s.x+=s.vx;s.y+=s.vy;s.vy+=.04;s.life-=dt*2.2;});
+    }, 800);
+  } else {
+    if (autoInterval) clearInterval(autoInterval);
+    btn.style.background = 'rgba(255,255,255,0.1)';
   }
-  draw(ctx,time){
-    if(this.stemP<=0)return;
-    ctx.save();ctx.strokeStyle='#2A7A2A';ctx.lineWidth=2.2;ctx.lineCap='round';ctx.lineJoin='round';
-    ctx.beginPath();
-    for(let i=0;i<=24;i++){const p=this.tip((i/24)*this.stemP,time);i===0?ctx.moveTo(p.x,p.y):ctx.lineTo(p.x,p.y);}
-    ctx.stroke();ctx.restore();
-    this.leaves.forEach(lf=>{
-      if(lf.p<=0||lf.t>this.stemP)return;
-      const pt=this.tip(lf.t,time);
-      ctx.save();ctx.translate(pt.x,pt.y);ctx.rotate(lf.side*(.5+.3*lf.p));ctx.scale(lf.p,lf.p);
-      ctx.fillStyle='#2E7D2E';ctx.beginPath();ctx.ellipse(lf.side*lf.sz*.9,0,lf.sz,lf.sz*.38,0,0,Math.PI*2);ctx.fill();ctx.restore();
-    });
-    if(this.bloomP>0){
-      const tp=this.tip(1,time);
-      const g=ctx.createRadialGradient(tp.x,tp.y,0,tp.x,tp.y,this.ps*2.2);
-      g.addColorStop(0,this.color+'44');g.addColorStop(.5,this.color+'18');g.addColorStop(1,'transparent');
-      ctx.fillStyle=g;ctx.beginPath();ctx.arc(tp.x,tp.y,this.ps*2.2,0,Math.PI*2);ctx.fill();
-      ctx.save();ctx.translate(tp.x,tp.y);ctx.rotate(Math.sin(time*this.swaySpeed*2+this.swayPh)*.035);
-      const s=this.ps,p=this.bloomP;
-      if(this.type==='cosmos')this._cosmos(ctx,s,p);
-      else if(this.type==='daisy')this._daisy(ctx,s,p);
-      else if(this.type==='heart')this._heart(ctx,s,p,time);
-      else if(this.type==='tulip')this._tulip(ctx,s,p);
-      else this._star(ctx,s,p);
-      ctx.restore();
-    }
-    this.sparks.forEach(s=>{
-      ctx.save();ctx.globalAlpha=Math.max(0,s.life*.8);ctx.fillStyle=this.color;
-      ctx.fillRect(s.x-s.sz/2,s.y-.7,s.sz,1.4);ctx.fillRect(s.x-.7,s.y-s.sz/2,1.4,s.sz);ctx.restore();
-    });
+}
+
+function createConfetti() {
+  for (let i = 0; i < 30; i++) {
+    setTimeout(() => {
+      const confetti = document.createElement('div');
+      confetti.innerHTML = ['🌸', '🌷', '🌻', '💕', '✨'][Math.floor(Math.random() * 5)];
+      confetti.style.position = 'fixed';
+      confetti.style.left = Math.random() * 100 + '%';
+      confetti.style.top = '-20px';
+      confetti.style.fontSize = (15 + Math.random() * 15) + 'px';
+      confetti.style.pointerEvents = 'none';
+      confetti.style.zIndex = '1000';
+      confetti.style.animation = `fall ${2 + Math.random() * 2}s linear forwards`;
+      document.body.appendChild(confetti);
+      setTimeout(() => confetti.remove(), 3000);
+    }, i * 100);
   }
-  _cosmos(ctx,s,p){
-    const sc=easeOut(p);
-    for(let i=0;i<6;i++){ctx.save();ctx.rotate((i/6)*Math.PI*2);ctx.scale(sc,sc);
-      const g=ctx.createRadialGradient(0,-s*.25,0,0,-s*.7,s*.55);
-      g.addColorStop(0,'rgba(255,255,255,.95)');g.addColorStop(.35,this.color+'DD');g.addColorStop(1,this.color+'33');
-      ctx.fillStyle=g;ctx.beginPath();ctx.ellipse(0,-s*.65,s*.26,s*.52,0,0,Math.PI*2);ctx.fill();ctx.restore();}
-    ctx.save();ctx.scale(sc,sc);const cg=ctx.createRadialGradient(0,0,0,0,0,s*.22);
-    cg.addColorStop(0,'#FFF4AA');cg.addColorStop(1,'#FF9A00');
-    ctx.fillStyle=cg;ctx.beginPath();ctx.arc(0,0,s*.22,0,Math.PI*2);ctx.fill();ctx.restore();
+}
+
+// Add keyframe animation
+const style = document.createElement('style');
+style.textContent = `
+  @keyframes fall {
+    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
   }
-  _daisy(ctx,s,p){
-    const sc=easeOut(p);
-    for(let i=0;i<10;i++){ctx.save();ctx.rotate((i/10)*Math.PI*2);ctx.scale(sc,sc);
-      ctx.fillStyle=this.color+'BB';ctx.beginPath();ctx.ellipse(0,-s*.55,s*.13,s*.44,0,0,Math.PI*2);ctx.fill();ctx.restore();}
-    ctx.save();ctx.scale(sc,sc);ctx.fillStyle='#FFD60A';ctx.beginPath();ctx.arc(0,0,s*.23,0,Math.PI*2);ctx.fill();ctx.restore();
-  }
-  _heart(ctx,s,p,time){
-    ctx.save();const sc=easeOut(p)*.74*(1+Math.sin(time*3+this.swayPh)*.04*p);ctx.scale(sc,sc);
-    const g=ctx.createRadialGradient(-s*.2,-s*.3,0,0,0,s*1.1);
-    g.addColorStop(0,'rgba(255,255,255,.9)');g.addColorStop(.3,this.color);g.addColorStop(1,this.color+'33');
-    ctx.fillStyle=g;ctx.beginPath();const h=s*.95;
-    ctx.moveTo(0,h*.28);ctx.bezierCurveTo
+`;
+document.head.appendChild(style);
+
+// Question setup
+function setupQuestion() {
+  const options = [
+    '💍 Say YES before you even finish asking',
+    '😭 Cry happy tears, then say yes 100 times',
+    '🥺 Faint from happiness, wake up still saying YES',
+    '👗 I already planned my outfit for this moment lol',
+    '💕 Hug you so tight and never let go'
+  ];
+  
+  const responses = [
+    '💕 I knew it! You made my heart so happy! 💕',
+    '😭 Stop you\'re gonna make ME cry! I love you so much! 😭',
+    '🥺 Don\'t faint! I need you awake to say yes properly! 🥺',
+    '👗 OMG you\'re so cute! I can\'t wait to see it! 👗',
+    '💕 Come here you! That\'s the only right answer! 💕'
+  ];
+  
+  const container = document.getElementById('optionsContainer');
+  options.forEach((opt, idx) => {
+    const btn = document.createElement('button');
+    btn.className = 'option';
+    btn.textContent = opt;
+    btn.onclick = () => {
+      const card = document.querySelector('.modal-card');
+      card.innerHTML = `
+        <span style="font-size: 50px;">💕</span>
+        <h2>${responses[idx]}</h2>
+        <p>here's something for you my love...</p>
+      `;
+      
+      setTimeout(() => {
+        document.getElementById('overlay').classList.add('show');
+        setTimeout(() => {
+          document.getElementById('questionModal').style.display = 'none';
+          document.getElementById('letterModal').style.display = 'block';
+          document.getElementById('overlay').classList.remove('show');
+        }, 500);
+      }, 1500);
+    };
+    btn.ontouchstart = (e) => {
+      e.preventDefault();
+      btn.onclick();
+    };
+    container.appendChild(btn);
+  });
+}
+
+// Event listeners
+document.getElementById('clearBtn').onclick = clearGarden;
+document.getElementById('clearBtn').ontouchstart = (e) => { e.preventDefault(); clearGarden(); };
+
+document.getElementById('autoBtn').onclick = autoBloom;
+document.getElementById('autoBtn').ontouchstart = (e) => { e.preventDefault(); autoBloom(); };
+
+document.getElementById('continueBtn').onclick = () => {
+  document.getElementById('overlay').classList.add('show');
+  setTimeout(() => {
+    document.getElementById('questionModal').style.display = 'flex';
+    document.getElementById('overlay').classList.remove('show');
+  }, 500);
+};
+document.getElementById('continueBtn').ontouchstart = (e) => { e.preventDefault(); document.getElementById('continueBtn').onclick(); };
+
+// Initialize
+createGarden();
+setupQuestion();
+
+console.log('Ready! Tap the pots to grow flowers 🌷');
+</script>
+</body>
+</html>
