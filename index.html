@@ -2,813 +2,400 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
-<title>Happy 1 Year My Love 🌷💕</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Happy 1 Year My Love 💕</title>
 <style>
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  -webkit-tap-highlight-color: transparent;
 }
 
 body {
-  background: linear-gradient(135deg, #0f0f1a 0%, #1a0f2a 50%, #0f0f1a 100%);
+  background: linear-gradient(135deg, #0a0a2a, #1a0a2a);
   min-height: 100vh;
   font-family: 'Georgia', serif;
-  position: relative;
-  overflow-x: hidden;
-}
-
-/* Romantic Background Stars */
-.stars {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.star {
-  position: absolute;
-  background: white;
-  border-radius: 50%;
-  opacity: 0.6;
-  animation: twinkle 3s infinite;
-}
-
-@keyframes twinkle {
-  0%,100% { opacity: 0.2; transform: scale(1); }
-  50% { opacity: 0.8; transform: scale(1.2); }
-}
-
-/* Main Container */
-.container {
-  position: relative;
-  z-index: 1;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   padding: 20px;
-}
-
-/* Romantic Title */
-.romantic-title {
   text-align: center;
-  margin-bottom: 30px;
-  animation: fadeInDown 0.8s ease;
 }
 
-@keyframes fadeInDown {
-  from {
-    opacity: 0;
-    transform: translateY(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.title {
+  margin: 20px 0;
 }
 
-.romantic-title h1 {
-  font-family: 'Dancing Script', cursive;
-  font-size: 42px;
-  background: linear-gradient(135deg, #FF8FB1, #E0AAFF, #FFD6A0);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  text-shadow: 0 0 30px rgba(255,143,177,0.3);
+.title h1 {
+  font-size: 32px;
+  color: #FF8FB1;
 }
 
-.romantic-title p {
-  color: rgba(255,200,220,0.7);
-  font-size: 16px;
-  margin-top: 10px;
-  font-style: italic;
+.counter {
+  font-size: 24px;
+  color: #FF8FB1;
+  margin: 20px;
+  font-weight: bold;
 }
 
-/* Garden Grid */
-.garden {
+/* SIMPLE BUTTON GRID */
+.flower-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  max-width: 450px;
+  gap: 15px;
+  max-width: 350px;
   margin: 20px auto;
 }
 
-.flower-pot {
-  aspect-ratio: 1;
-  background: linear-gradient(145deg, rgba(255,143,177,0.1), rgba(199,125,255,0.05));
-  border-radius: 30px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+.flower-btn {
+  background: rgba(255,255,255,0.1);
+  border: 2px solid #FF8FB1;
+  border-radius: 20px;
+  padding: 30px 10px;
+  text-align: center;
   cursor: pointer;
-  transition: all 0.3s ease;
-  border: 2px solid rgba(255,143,177,0.3);
-  backdrop-filter: blur(5px);
-  box-shadow: 0 8px 32px rgba(0,0,0,0.2);
-  touch-action: manipulation;
-  position: relative;
-  overflow: hidden;
+  font-size: 40px;
+  transition: all 0.2s;
 }
 
-.flower-pot::before {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 30%;
-  background: linear-gradient(to top, rgba(76,175,80,0.2), transparent);
-  border-radius: 0 0 30px 30px;
-}
-
-.flower-pot:active {
+.flower-btn:active {
   transform: scale(0.95);
-  background: linear-gradient(145deg, rgba(255,143,177,0.2), rgba(199,125,255,0.1));
-  border-color: #FF8FB1;
-}
-
-.flower-emoji {
-  font-size: 55px;
-  transition: all 0.3s;
-  filter: drop-shadow(0 0 10px rgba(255,143,177,0.5));
+  background: rgba(255,143,177,0.3);
 }
 
 .flower-name {
-  margin-top: 12px;
-  color: rgba(255,255,255,0.7);
   font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 1px;
-}
-
-.pot-grown .flower-emoji {
-  animation: bounce 0.4s cubic-bezier(0.34, 1.2, 0.64, 1);
-}
-
-@keyframes bounce {
-  0%,100% { transform: scale(1); }
-  50% { transform: scale(1.15) rotate(5deg); }
-}
-
-/* Counter */
-.counter {
-  text-align: center;
-  font-size: 22px;
-  color: #FF8FB1;
-  margin: 20px;
-  font-family: 'Dancing Script', cursive;
-  background: rgba(0,0,0,0.3);
-  padding: 8px 20px;
-  border-radius: 50px;
-  display: inline-block;
-  backdrop-filter: blur(5px);
-}
-
-.counter-wrapper {
-  text-align: center;
-}
-
-/* Buttons */
-.button-group {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  margin: 20px;
-}
-
-.romantic-btn {
-  padding: 12px 28px;
-  border-radius: 50px;
-  border: none;
-  background: rgba(255,255,255,0.1);
   color: white;
-  font-size: 14px;
-  font-weight: 600;
+  margin-top: 10px;
+}
+
+.grown {
+  background: rgba(255,143,177,0.2);
+  border-color: #FFD700;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin: 20px;
+}
+
+.action-btn {
+  padding: 12px 25px;
+  font-size: 16px;
+  border: none;
+  border-radius: 30px;
+  background: rgba(255,255,255,0.2);
+  color: white;
   cursor: pointer;
-  backdrop-filter: blur(10px);
-  transition: all 0.3s;
-  border: 1px solid rgba(255,143,177,0.3);
-  font-family: 'Georgia', serif;
-  touch-action: manipulation;
 }
 
-.romantic-btn:active {
-  transform: scale(0.95);
-}
-
-.romantic-btn.clear {
-  background: rgba(255,255,255,0.08);
-}
-
-.romantic-btn.auto {
-  background: rgba(255,140,60,0.25);
-  border-color: rgba(255,140,60,0.4);
-}
-
-.romantic-btn.auto.active {
-  background: rgba(255,100,30,0.5);
-  box-shadow: 0 0 20px rgba(255,120,40,0.4);
-}
-
-.continue-btn {
+.continue {
   background: linear-gradient(135deg, #FF4D7E, #C77DFF);
-  padding: 15px 45px;
-  font-size: 20px;
-  font-family: 'Dancing Script', cursive;
-  margin: 20px auto;
+  padding: 15px 40px;
+  font-size: 18px;
   display: none;
-  animation: pulse 2s infinite;
-  box-shadow: 0 0 25px rgba(255,77,126,0.4);
+  margin: 20px auto;
 }
 
-@keyframes pulse {
-  0%,100% { transform: scale(1); box-shadow: 0 0 25px rgba(255,77,126,0.4); }
-  50% { transform: scale(1.05); box-shadow: 0 0 40px rgba(255,77,126,0.7); }
-}
-
-/* Modal */
+/* MODAL */
 .modal {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.96);
-  backdrop-filter: blur(15px);
+  background: rgba(0,0,0,0.95);
   z-index: 100;
   display: none;
   align-items: center;
   justify-content: center;
-  animation: fadeIn 0.4s ease;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-.modal-card {
-  background: linear-gradient(145deg, rgba(255,143,177,0.12), rgba(199,125,255,0.08));
-  border-radius: 60px;
-  padding: 45px 35px;
-  max-width: 380px;
-  width: 85%;
+.modal-box {
+  background: #1a0a2a;
+  padding: 40px;
+  border-radius: 30px;
+  max-width: 300px;
   text-align: center;
-  border: 1px solid rgba(255,143,177,0.4);
-  backdrop-filter: blur(10px);
-  animation: slideUp 0.5s cubic-bezier(0.34, 1.2, 0.64, 1);
+  border: 2px solid #FF8FB1;
 }
 
-@keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(50px) scale(0.9);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-.modal-emoji {
-  font-size: 65px;
-  display: block;
-  margin-bottom: 15px;
-  animation: bounce 0.5s ease;
-}
-
-.modal-card h2 {
-  font-family: 'Dancing Script', cursive;
-  font-size: 32px;
+.modal-box h2 {
   color: #FF8FB1;
-  margin: 15px 0;
+  margin: 20px 0;
 }
 
-.modal-card p {
-  color: rgba(255,200,220,0.7);
-  margin-bottom: 30px;
-  font-size: 15px;
-}
-
-.choice-buttons {
-  display: flex;
-  gap: 20px;
-  justify-content: center;
-}
-
-.choice-btn {
-  padding: 14px 35px;
-  border-radius: 50px;
+.yes-btn, .no-btn {
+  padding: 12px 30px;
+  margin: 10px;
   border: none;
-  font-size: 20px;
-  font-weight: bold;
+  border-radius: 30px;
+  font-size: 18px;
   cursor: pointer;
-  transition: all 0.3s;
-  font-family: 'Dancing Script', cursive;
-  touch-action: manipulation;
 }
 
-.choice-btn.yes {
-  background: linear-gradient(135deg, #FF4D7E, #C77DFF);
+.yes-btn {
+  background: #FF4D7E;
   color: white;
-  box-shadow: 0 0 20px rgba(255,77,126,0.4);
 }
 
-.choice-btn.no {
-  background: linear-gradient(135deg, #2a1a2a, #1a0a1a);
+.no-btn {
+  background: #2a1a2a;
   color: #8B0000;
   border: 1px solid #8B0000;
 }
 
-.choice-btn:active {
-  transform: scale(0.95);
-}
-
-/* Evil NO Response */
-.evil-modal {
+/* EVIL MODAL */
+.evil {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: #000;
+  background: black;
   z-index: 150;
   display: none;
   align-items: center;
   justify-content: center;
-  animation: evilAppear 0.3s ease;
-}
-
-@keyframes evilAppear {
-  0% { background: rgba(0,0,0,0); }
-  100% { background: #000; }
-}
-
-.evil-content {
   text-align: center;
-  animation: shake 0.5s ease;
 }
 
-@keyframes shake {
-  0%,100% { transform: translateX(0); }
-  25% { transform: translateX(-10px); }
-  75% { transform: translateX(10px); }
-}
-
-.evil-emoji {
-  font-size: 120px;
+.evil span {
+  font-size: 100px;
   display: block;
-  animation: evilBounce 0.6s infinite;
 }
 
-@keyframes evilBounce {
-  0%,100% { transform: translateY(0); }
-  50% { transform: translateY(-15px); }
-}
-
-.evil-text {
-  font-size: 48px;
+.evil h1 {
+  font-size: 50px;
   color: #8B0000;
-  font-family: 'Impact', monospace;
-  letter-spacing: 5px;
-  margin: 20px 0;
-  text-shadow: 0 0 20px red;
-  animation: glitch 0.5s infinite;
+  margin: 20px;
 }
 
-@keyframes glitch {
-  0%,100% { text-shadow: 0 0 20px red; }
-  50% { text-shadow: 0 0 40px darkred, 2px 2px 0 red; }
-}
-
-.evil-sub {
-  color: #4a0000;
-  font-size: 18px;
-  margin-top: 20px;
-  font-family: monospace;
-}
-
-/* Letter */
+/* LETTER */
 .letter {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, #0a0a1a, #1a0a2a);
+  background: #0a0a1a;
   z-index: 200;
   display: none;
   overflow-y: auto;
-  padding: 60px 25px;
+  padding: 40px 20px;
 }
 
 .letter-content {
-  max-width: 550px;
+  max-width: 500px;
   margin: 0 auto;
-  animation: fadeInUp 0.8s ease;
+  color: white;
+  line-height: 1.8;
 }
 
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.letter-header {
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-.letter-kaomoji {
-  font-size: 45px;
-  display: block;
-  margin-bottom: 15px;
-}
-
-.letter-title {
-  font-family: 'Dancing Script', cursive;
-  font-size: 42px;
-  background: linear-gradient(135deg, #FF8FB1, #E0AAFF, #FFD6A0);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  line-height: 1.3;
-}
-
-.letter-divider {
-  width: 80px;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, #FF8FB1, transparent);
-  margin: 25px auto;
-}
-
-.letter-text {
-  color: rgba(255,245,250,0.88);
-  font-size: 17px;
-  line-height: 2;
-}
-
-.letter-text p {
-  margin-bottom: 22px;
-}
-
-.letter-text .pink {
+.letter-content h1 {
   color: #FF8FB1;
-  font-style: italic;
+  margin-bottom: 30px;
 }
 
-.letter-text .purple {
-  color: #D4AAFF;
-  font-style: italic;
+.letter-content p {
+  margin-bottom: 20px;
 }
 
-.letter-footer {
+.sign {
+  margin-top: 40px;
+  color: #C77DFF;
   text-align: center;
-  margin-top: 50px;
-  padding-top: 30px;
-  border-top: 1px solid rgba(255,143,177,0.2);
-}
-
-.forever-text {
-  font-family: 'Dancing Script', cursive;
-  font-size: 32px;
-  background: linear-gradient(135deg, #FF8FB1, #C77DFF);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  display: block;
-  margin-bottom: 15px;
-}
-
-.signature {
-  color: rgba(255,200,220,0.5);
-  font-style: italic;
-}
-
-/* Overlay */
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #000;
-  z-index: 300;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.5s;
-}
-
-.overlay.show {
-  opacity: 1;
-  pointer-events: all;
-}
-
-/* Floating hearts */
-.floating-heart {
-  position: fixed;
-  pointer-events: none;
-  z-index: 50;
-  animation: floatHeart 3s ease-out forwards;
-}
-
-@keyframes floatHeart {
-  0% {
-    transform: translateY(0) scale(0.5);
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(-150px) scale(1.5);
-    opacity: 0;
-  }
 }
 </style>
 </head>
 <body>
 
-<div class="stars" id="stars"></div>
-<div class="overlay" id="overlay"></div>
-
-<div class="container">
-  <div class="romantic-title">
-    <h1>🌷 Flower Garden 🌻</h1>
-    <p>for the love of my life 💕</p>
-  </div>
-
-  <div class="counter-wrapper">
-    <div class="counter" id="counter">🌸 0 / 9</div>
-  </div>
-
-  <div class="garden" id="garden"></div>
-
-  <div class="button-group">
-    <button class="romantic-btn clear" id="clearBtn">🌱 Clear Garden</button>
-    <button class="romantic-btn auto" id="autoBtn">✨ Auto Bloom</button>
-  </div>
-
-  <button class="romantic-btn continue-btn" id="continueBtn">💌 Continue to Surprise 💌</button>
+<div class="title">
+  <h1>🌷 For My Love 🌻</h1>
+  <p>tap the flowers to grow your garden</p>
 </div>
 
-<!-- Question Modal (YES/NO) -->
+<div class="counter" id="counter">🌸 0 / 9</div>
+
+<div class="flower-grid" id="flowerGrid"></div>
+
+<div class="action-buttons">
+  <button class="action-btn" id="clearBtn">🌱 Clear</button>
+  <button class="action-btn" id="autoBtn">✨ Auto</button>
+</div>
+
+<button class="action-btn continue" id="continueBtn">💌 Continue 💌</button>
+
+<!-- YES/NO Modal -->
 <div class="modal" id="questionModal">
-  <div class="modal-card">
-    <span class="modal-emoji">💍🌷</span>
+  <div class="modal-box">
+    <span style="font-size: 50px;">💍</span>
     <h2>What will you do if I propose you?</h2>
-    <p>take your time baby... I'm totally calm 🥺</p>
-    <div class="choice-buttons">
-      <button class="choice-btn yes" id="yesBtn">💕 YES 💕</button>
-      <button class="choice-btn no" id="noBtn">😈 NO 😈</button>
-    </div>
+    <button class="yes-btn" id="yesBtn">💕 YES 💕</button>
+    <button class="no-btn" id="noBtn">😈 NO 😈</button>
   </div>
 </div>
 
-<!-- Evil NO Response Modal -->
-<div class="evil-modal" id="evilModal">
-  <div class="evil-content">
-    <span class="evil-emoji">👁️👅👁️</span>
-    <div class="evil-text">BLEHHHHHHHHH!</div>
-    <div class="evil-sub">you thought you could say no? 😈</div>
-    <div class="evil-sub" style="font-size: 14px; margin-top: 30px;">just kidding... tap anywhere to go back 💀</div>
+<!-- Evil Modal -->
+<div class="evil" id="evilModal">
+  <div>
+    <span>👁️👅👁️</span>
+    <h1>BLEHHHHHHHHH!</h1>
+    <p style="color: #4a0000;">you thought you could say no? 💀</p>
   </div>
 </div>
 
-<!-- Letter Modal -->
+<!-- Letter -->
 <div class="letter" id="letterModal">
   <div class="letter-content">
-    <div class="letter-header">
-      <span class="letter-kaomoji">(づ￣ ³￣)づ</span>
-      <div class="letter-title">Happy 1 Year Anniversary<br>my love of life</div>
-      <div class="letter-divider"></div>
-    </div>
+    <h1>Happy 1 Year Anniversary my love of life 🫶</h1>
     
-    <div class="letter-text">
-      <p>A whole year of us…</p>
-      
-      <p>And when I look back I don't just see the happy moments — I see <span class="pink">everything.</span> I see the late-night talks, the random little things that made us smile, the way you call me your baby and treat me like your chotu bcha 😽😽😽</p>
-      
-      <p>The way you always try to understand me even when I don't know how to explain myself.</p>
-      
-      <p>I see every misunderstanding, every time we both overthought, every time we got hurt, cried, got scared, thought too much — and still somehow <span class="pink">found our way back to each other.</span></p>
-      
-      <p>We were never perfect. But maybe that's why this feels so real. Cuz no matter how difficult it got, no matter how many times we both got scared of losing each other — we still stayed. <span class="purple">You stayed too.</span></p>
-      
-      <p>You have loved me in ways nobody ever has. You made me feel seen, important, cared for and safe. Even when you were hurting, you still thought about me first. Even when you felt like you were "too much" — all I ever saw was a girl with the <span class="pink">softest, most sensitive heart</span> who loves so deeply that sometimes it scares her, yet still holds pure love 👉👈</p>
-      
-      <p>And I know I'm not easy either. I know I overthink, go quiet, get hurt and sometimes say the wrong things. But through all of that — <span class="purple">you still chose me.</span></p>
-      
-      <p>Thank you for every <span class="pink">"I love us"</span> 🤭 Every reassurance. Every time you stayed instead of giving up. Every time you reminded me that we're on the same side.</p>
-      
-      <p>I don't want a perfect love story. <span class="purple">I want this one.</span> I want YOU — exactly as you are — for every year after this too.</p>
-      
-      <p>For every lifetime <span class="pink">(づ｡◕‿‿◕｡)づ</span></p>
-    </div>
+    <p>A whole year of us…</p>
     
-    <div class="letter-footer">
-      <span class="forever-text">For every year. For every lifetime.</span>
-      <div class="signature">— with all my love, always 💕</div>
-    </div>
+    <p>And when I look back I don't just see the happy moments — I see everything. I see the late-night talks, the random little things that made us smile, the way you call me your baby and treat me like your chotu bcha 😽😽😽</p>
+    
+    <p>The way you always try to understand me even when I don't know how to explain myself.</p>
+    
+    <p>I see every misunderstanding, every time we both overthought, every time we got hurt, cried, got scared, thought too much — and still somehow found our way back to each other.</p>
+    
+    <p>We were never perfect. But maybe that's why this feels so real. Cuz no matter how difficult it got, no matter how many times we both got scared of losing each other — we still stayed. You stayed too.</p>
+    
+    <p>You have loved me in ways nobody ever has. You made me feel seen, important, cared for and safe. Even when you were hurting, you still thought about me first. Even when you felt like you were "too much" — all I ever saw was a girl with the softest, most sensitive heart who loves so deeply that sometimes it scares her, yet still holds pure love 👉👈</p>
+    
+    <p>And I know I'm not easy either. I know I overthink, go quiet, get hurt and sometimes say the wrong things. But through all of that — you still chose me.</p>
+    
+    <p>Thank you for every "I love us" 🤭 Every reassurance. Every time you stayed instead of giving up. Every time you reminded me that we're on the same side.</p>
+    
+    <p>I don't want a perfect love story. I want this one. I want YOU — exactly as you are — for every year after this too.</p>
+    
+    <p>For every lifetime (づ｡◕‿‿◕｡)づ</p>
+    
+    <div class="sign">— with all my love, always 💕</div>
   </div>
 </div>
 
 <script>
-// Create stars
-function createStars() {
-  const starsContainer = document.getElementById('stars');
-  for (let i = 0; i < 100; i++) {
-    const star = document.createElement('div');
-    star.className = 'star';
-    star.style.left = Math.random() * 100 + '%';
-    star.style.top = Math.random() * 100 + '%';
-    star.style.width = (Math.random() * 3 + 1) + 'px';
-    star.style.height = star.style.width;
-    star.style.animationDelay = Math.random() * 3 + 's';
-    starsContainer.appendChild(star);
-  }
-}
-createStars();
+// Flowers
+const flowers = ['🌷', '🌻', '🌸', '🌺', '🌼', '💐', '🌹'];
+const names = ['Tulip', 'Sunflower', 'Cherry', 'Hibiscus', 'Daisy', 'Bouquet', 'Rose'];
 
-// Flower types
-const flowers = ['🌷', '🌻', '🌸', '🌺', '🌼', '💐', '🌹', '🪷'];
-const flowerNames = ['Tulip', 'Sunflower', 'Cherry Blossom', 'Hibiscus', 'Daisy', 'Bouquet', 'Rose', 'Lotus'];
-
-let grownCount = 0;
+let grown = new Array(9).fill(false);
+let count = 0;
 let autoMode = false;
 let autoInterval = null;
-let potStates = new Array(9).fill(false);
 
-const garden = document.getElementById('garden');
+const grid = document.getElementById('flowerGrid');
 
-function createGarden() {
-  garden.innerHTML = '';
+function createGrid() {
+  grid.innerHTML = '';
   for (let i = 0; i < 9; i++) {
-    const pot = document.createElement('div');
-    pot.className = 'flower-pot';
-    pot.setAttribute('data-index', i);
+    const btn = document.createElement('button');
+    btn.className = 'flower-btn';
+    if (grown[i]) btn.classList.add('grown');
     
-    pot.innerHTML = `
-      <div class="flower-emoji">🌱</div>
-      <div class="flower-name">Plant Me</div>
-    `;
+    if (grown[i]) {
+      const randomFlower = flowers[Math.floor(Math.random() * flowers.length)];
+      const randomName = names[Math.floor(Math.random() * names.length)];
+      btn.innerHTML = `<div>${randomFlower}</div><div class="flower-name">${randomName}</div>`;
+    } else {
+      btn.innerHTML = `<div>🌱</div><div class="flower-name">Plant</div>`;
+    }
     
-    pot.onclick = () => growFlower(i);
-    pot.ontouchstart = (e) => {
+    btn.onclick = () => growFlower(i);
+    btn.ontouchstart = (e) => {
       e.preventDefault();
       growFlower(i);
     };
     
-    garden.appendChild(pot);
+    grid.appendChild(btn);
   }
 }
 
 function growFlower(index) {
-  if (potStates[index]) return;
-  if (grownCount >= 9) return;
+  if (grown[index]) return;
+  if (count >= 9) return;
   
-  potStates[index] = true;
-  grownCount++;
+  grown[index] = true;
+  count++;
   
-  const randomFlower = flowers[Math.floor(Math.random() * flowers.length)];
-  const randomName = flowerNames[Math.floor(Math.random() * flowerNames.length)];
+  document.getElementById('counter').innerHTML = `🌸 ${count} / 9`;
+  createGrid();
   
-  const pot = garden.children[index];
-  pot.classList.add('pot-grown');
-  pot.innerHTML = `
-    <div class="flower-emoji">${randomFlower}</div>
-    <div class="flower-name">${randomName}</div>
-  `;
-  
-  document.getElementById('counter').innerHTML = `🌸 ${grownCount} / 9`;
-  
-  // Create floating heart effect
-  createFloatingHeart();
-  
-  // Show continue button when all flowers grown
-  if (grownCount === 9) {
+  if (count === 9) {
     document.getElementById('continueBtn').style.display = 'block';
-    createConfetti();
-  }
-}
-
-function createFloatingHeart() {
-  const heart = document.createElement('div');
-  heart.className = 'floating-heart';
-  heart.innerHTML = ['💕', '💖', '💗', '💓', '🌸', '🌷'][Math.floor(Math.random() * 6)];
-  heart.style.left = Math.random() * 80 + 10 + '%';
-  heart.style.bottom = '20px';
-  heart.style.fontSize = (20 + Math.random() * 20) + 'px';
-  document.body.appendChild(heart);
-  setTimeout(() => heart.remove(), 3000);
-}
-
-function createConfetti() {
-  const petals = ['🌸', '🌷', '🌻', '💕', '✨', '💖'];
-  for (let i = 0; i < 40; i++) {
-    setTimeout(() => {
-      const confetti = document.createElement('div');
-      confetti.innerHTML = petals[Math.floor(Math.random() * petals.length)];
-      confetti.style.position = 'fixed';
-      confetti.style.left = Math.random() * 100 + '%';
-      confetti.style.top = '-20px';
-      confetti.style.fontSize = (15 + Math.random() * 20) + 'px';
-      confetti.style.pointerEvents = 'none';
-      confetti.style.zIndex = '1000';
-      confetti.style.animation = `fall ${2 + Math.random() * 2}s linear forwards`;
-      document.body.appendChild(confetti);
-      setTimeout(() => confetti.remove(), 3000);
-    }, i * 80);
   }
 }
 
 function clearGarden() {
-  potStates.fill(false);
-  grownCount = 0;
+  grown = new Array(9).fill(false);
+  count = 0;
   document.getElementById('counter').innerHTML = `🌸 0 / 9`;
   document.getElementById('continueBtn').style.display = 'none';
-  createGarden();
+  createGrid();
 }
 
 function toggleAuto() {
   autoMode = !autoMode;
   const btn = document.getElementById('autoBtn');
   if (autoMode) {
-    btn.classList.add('active');
+    btn.style.background = '#FF8FB1';
     autoInterval = setInterval(() => {
-      if (grownCount < 9) {
-        const emptyPots = [];
+      if (count < 9) {
         for (let i = 0; i < 9; i++) {
-          if (!potStates[i]) emptyPots.push(i);
-        }
-        if (emptyPots.length > 0) {
-          const randomPot = emptyPots[Math.floor(Math.random() * emptyPots.length)];
-          growFlower(randomPot);
+          if (!grown[i]) {
+            growFlower(i);
+            break;
+          }
         }
       } else {
         clearInterval(autoInterval);
         autoMode = false;
-        btn.classList.remove('active');
+        btn.style.background = 'rgba(255,255,255,0.2)';
       }
-    }, 700);
+    }, 600);
   } else {
     if (autoInterval) clearInterval(autoInterval);
-    btn.classList.remove('active');
+    btn.style.background = 'rgba(255,255,255,0.2)';
   }
 }
 
-// Add fall animation
-const styleSheet = document.createElement('style');
-styleSheet.textContent = `
-  @keyframes fall {
-    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-    100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
-  }
-`;
-document.head.appendChild(styleSheet);
-
-// Event listeners
-document.getElementById('clearBtn').onclick = clearGarden;
-document.getElementById('clearBtn').ontouchstart = (e) => { e.preventDefault(); clearGarden(); };
-
-document.getElementById('autoBtn').onclick = toggleAuto;
-document.getElementById('autoBtn').ontouchstart = (e) => { e.preventDefault(); toggleAuto(); };
-
-const overlay = document.getElementById('overlay');
+// Modal handling
 const questionModal = document.getElementById('questionModal');
 const evilModal = document.getElementById('evilModal');
 const letterModal = document.getElementById('letterModal');
 
 document.getElementById('continueBtn').onclick = () => {
-  overlay.classList.add('show');
-  setTimeout(() => {
-    document.querySelector('.container').style.display = 'none';
-    questionModal.style.display = 'flex';
-    overlay.classList.remove('show');
-  }, 500);
+  document.querySelector('.title').style.display = 'none';
+  document.querySelector('.counter').style.display = 'none';
+  document.getElementById('flowerGrid').style.display = 'none';
+  document.querySelector('.action-buttons').style.display = 'none';
+  document.getElementById('continueBtn').style.display = 'none';
+  questionModal.style.display = 'flex';
 };
-document.getElementById('continueBtn').ontouchstart = (e) => { e.preventDefault(); document.getElementById('continueBtn').onclick(); };
 
-// YES button
 document.getElementById('yesBtn').onclick = () => {
-  const card = document.querySelector('.modal-card');
-  card.innerHTML = `
-    <span class="modal-emoji">💕🌷💕</span>
-    <h2>I knew it! You made my heart so happy!</h2>
-    <p>here's something special for you my love...</p>
-  `;
-  
+  questionModal.style.display = 'none';
+  letterModal.style.display = 'block';
+};
+
+document.getElementById('noBtn').onclick = () => {
+  questionModal.style.display = 'none';
+  evilModal.style.display = 'flex';
   setTimeout(() => {
-    overlay.classList.add('show');
-    setTimeout(() => {
-      questionModal.styl
+    evilModal.style.display = 'none';
+    questionModal.style.display = 'flex';
+  }, 2500);
+};
+
+evilModal.onclick = () => {
+  evilModal.style.display = 'none';
+  questionModal.style.display = 'flex';
+};
+
+document.getElementById('clearBtn').onclick = clearGarden;
+document.getElementById('autoBtn').onclick = toggleAuto;
+
+// Start
+createGrid();
+</script>
+</body>
+</html>
