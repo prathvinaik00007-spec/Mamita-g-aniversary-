@@ -9,13 +9,13 @@
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{
   width:100%;height:100%;
-  background:#000;overflow:hidden;
+  background:#000;
+  overflow:hidden;
   font-family:'Crimson Pro',serif;
   touch-action:manipulation;
   -webkit-tap-highlight-color:transparent;
 }
 
-/* ══ GARDEN UI ══ */
 #lbl{position:fixed;top:18px;left:18px;z-index:30;font-family:'Dancing Script',cursive;font-size:15px;color:rgba(255,180,210,.55);pointer-events:none;}
 #ctr{position:fixed;top:16px;right:18px;z-index:30;font-size:13px;color:rgba(255,180,210,.4);font-style:italic;pointer-events:none;}
 #hint{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;z-index:30;pointer-events:none;transition:opacity .8s;}
@@ -26,161 +26,23 @@ html,body{
 .btn-row{position:fixed;bottom:38px;left:50%;transform:translateX(-50%);display:flex;gap:12px;z-index:50;}
 .bb{padding:13px 26px;border-radius:999px;border:1px solid rgba(255,255,255,.2);background:rgba(30,30,30,.95);color:rgba(255,255,255,.88);font-family:'Crimson Pro',serif;font-size:15px;cursor:pointer;white-space:nowrap;-webkit-appearance:none;outline:none;display:inline-block;touch-action:manipulation;}
 #abtn{background:rgba(70,28,3,.95);border-color:rgba(255,130,40,.3);color:#FFD0A0;}
-#abtn.on{background:rgba(160,55,5,.95);color:#FFE8C0;}
+#abtn.on{background:rgba(160,55,5,.95);color:#FFE8C0;box-shadow:0 0 14px rgba(255,100,30,.4);}
 
 #cont-wrap{position:fixed;bottom:106px;left:50%;transform:translateX(-50%);z-index:50;display:none;text-align:center;}
 #cont-btn{padding:15px 34px;background:linear-gradient(135deg,#FF4D7E,#C77DFF);border:none;border-radius:999px;color:#fff;font-family:'Dancing Script',cursive;font-size:20px;cursor:pointer;-webkit-appearance:none;outline:none;animation:pp 2.2s ease-in-out infinite;white-space:nowrap;display:inline-block;touch-action:manipulation;}
 #cont-btn small{display:block;font-family:'Crimson Pro',serif;font-size:12px;opacity:.65;font-style:italic;margin-top:2px;}
 @keyframes pp{0%,100%{box-shadow:0 0 32px rgba(255,77,126,.4);transform:scale(1)}50%{box-shadow:0 0 56px rgba(255,77,126,.6);transform:scale(1.04)}}
 
-/* ══ CSS FLOWER ══ */
-.fl{
-  position:fixed;
-  bottom:0;
-  pointer-events:none;
-  transform:translateX(-50%);
-  display:flex;flex-direction:column;align-items:center;
-  z-index:2;
-}
+.flower{position:fixed;bottom:0;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;pointer-events:none;animation:growUp 1.2s cubic-bezier(.22,1,.36,1) forwards;transform-origin:bottom center;}
+@keyframes growUp{0%{opacity:0;transform:translateX(-50%) scaleY(0)}60%{opacity:1}100%{opacity:1;transform:translateX(-50%) scaleY(1)}}
+.flower-head{font-size:32px;animation:bloomIn .5s ease forwards;animation-delay:.7s;opacity:0;transform:scale(0);display:block;filter:drop-shadow(0 0 8px rgba(255,143,177,.6));}
+@keyframes bloomIn{0%{opacity:0;transform:scale(0) rotate(-20deg)}70%{transform:scale(1.2) rotate(5deg)}100%{opacity:1;transform:scale(1) rotate(0deg)}}
+.flower-stem{width:3px;background:linear-gradient(to top,#1a5c1a,#2E7D2E);border-radius:2px;animation:stemGrow .7s ease forwards;transform-origin:bottom;transform:scaleY(0);}
+@keyframes stemGrow{to{transform:scaleY(1)}}
+.flower-sparkle{position:absolute;top:0;left:50%;transform:translateX(-50%);pointer-events:none;animation:sparkFade 1.5s ease forwards;animation-delay:.8s;opacity:0;font-size:12px;}
+@keyframes sparkFade{0%{opacity:1;transform:translateX(-50%) translateY(0) scale(1)}100%{opacity:0;transform:translateX(-50%) translateY(-30px) scale(.5)}}
 
-/* Stem */
-.stem{
-  width:3px;
-  border-radius:3px;
-  background:linear-gradient(to top,#1a5218,#2d8c2d);
-  transform-origin:bottom center;
-  animation:stemUp .7s cubic-bezier(.22,1,.36,1) forwards;
-  transform:scaleY(0);
-  position:relative;
-}
-@keyframes stemUp{to{transform:scaleY(1)}}
-
-/* Sway after grow */
-.fl{animation:sway 4s ease-in-out infinite;}
-.fl:nth-child(odd){animation:sway2 4.5s ease-in-out infinite;}
-@keyframes sway{0%,100%{transform:translateX(-50%) rotate(-2deg)}50%{transform:translateX(-50%) rotate(2deg)}}
-@keyframes sway2{0%,100%{transform:translateX(-50%) rotate(1.5deg)}50%{transform:translateX(-50%) rotate(-2.5deg)}}
-
-/* Leaf */
-.leaf{
-  position:absolute;
-  width:14px;height:8px;
-  border-radius:50%;
-  background:linear-gradient(135deg,#2d8c2d,#1a5218);
-  opacity:0;
-  animation:leafPop .4s ease forwards;
-}
-.leaf.left{
-  left:-12px;
-  transform-origin:right center;
-  transform:rotate(-40deg) scale(0);
-}
-.leaf.right{
-  right:-12px;
-  transform-origin:left center;
-  transform:rotate(40deg) scale(0);
-}
-@keyframes leafPop{to{opacity:.85;transform:rotate(0deg) scale(1)}}
-
-/* Bloom wrapper */
-.bloom{
-  opacity:0;
-  transform:scale(0) rotate(-15deg);
-  animation:bloomIn .6s cubic-bezier(.34,1.56,.64,1) forwards;
-  position:relative;
-  margin-bottom:-2px;
-}
-@keyframes bloomIn{
-  0%{opacity:0;transform:scale(0) rotate(-15deg)}
-  70%{transform:scale(1.15) rotate(5deg)}
-  100%{opacity:1;transform:scale(1) rotate(0deg)}
-}
-
-/* Glow behind flower */
-.glow{
-  position:absolute;
-  top:50%;left:50%;
-  transform:translate(-50%,-50%);
-  border-radius:50%;
-  animation:glowPulse 2.5s ease-in-out infinite;
-  pointer-events:none;
-}
-@keyframes glowPulse{0%,100%{opacity:.5;transform:translate(-50%,-50%) scale(1)}50%{opacity:.8;transform:translate(-50%,-50%) scale(1.15)}}
-
-/* Sparkle */
-.spark{
-  position:absolute;
-  font-size:11px;
-  pointer-events:none;
-  animation:sparkFly .9s ease-out forwards;
-}
-@keyframes sparkFly{
-  0%{opacity:1;transform:translate(0,0) scale(1)}
-  100%{opacity:0;transform:translate(var(--tx),var(--ty)) scale(.3)}
-}
-
-/* ── Tulip ── */
-.tulip-wrap{position:relative;width:46px;height:52px;}
-.tulip-petal{
-  position:absolute;
-  bottom:0;left:50%;
-  border-radius:50% 50% 20% 20%;
-  transform-origin:bottom center;
-}
-.tp-l{width:16px;height:36px;transform:translateX(-90%) rotate(-22deg);background:linear-gradient(180deg,rgba(255,255,255,.9) 0%,var(--pc) 40%,var(--pd) 100%);}
-.tp-r{width:16px;height:36px;transform:translateX(0%) rotate(22deg);background:linear-gradient(180deg,rgba(255,255,255,.9) 0%,var(--pc) 40%,var(--pd) 100%);}
-.tp-c{width:18px;height:44px;transform:translateX(-50%);background:linear-gradient(180deg,rgba(255,255,255,.96) 0%,var(--pc) 30%,var(--pd) 100%);z-index:2;}
-
-/* ── Cosmos ── */
-.cosmos-wrap{position:relative;width:52px;height:52px;display:flex;align-items:center;justify-content:center;}
-.cpetal{
-  position:absolute;
-  width:13px;height:26px;
-  border-radius:50%;
-  background:linear-gradient(180deg,rgba(255,255,255,.95) 0%,var(--pc) 50%,var(--pd) 100%);
-  transform-origin:bottom center;
-  bottom:50%;left:calc(50% - 6.5px);
-}
-.ccenter{
-  position:absolute;
-  width:12px;height:12px;
-  border-radius:50%;
-  background:radial-gradient(circle,#FFF5AA,#FF9A00);
-  z-index:3;
-}
-
-/* ── Daisy ── */
-.daisy-wrap{position:relative;width:52px;height:52px;display:flex;align-items:center;justify-content:center;}
-.dpetal{
-  position:absolute;
-  width:9px;height:22px;
-  border-radius:50%;
-  background:var(--pc);
-  transform-origin:bottom center;
-  bottom:50%;left:calc(50% - 4.5px);
-  opacity:.85;
-}
-.dcenter{position:absolute;width:14px;height:14px;border-radius:50%;background:radial-gradient(circle,#FFF5AA,#FFD60A);z-index:3;}
-
-/* ── Heart ── */
-.heart-wrap{position:relative;width:48px;height:44px;display:flex;align-items:center;justify-content:center;}
-.heart-shape{
-  width:32px;height:30px;
-  background:var(--pc);
-  position:relative;
-  transform:rotate(-45deg);
-  box-shadow:0 0 14px var(--ps);
-}
-.heart-shape::before,.heart-shape::after{
-  content:'';position:absolute;
-  width:32px;height:32px;
-  border-radius:50%;
-  background:var(--pc);
-}
-.heart-shape::before{top:-16px;left:0;}
-.heart-shape::after{top:0;left:16px;}
-
-/* ══ QUESTION ══ */
+/* QUESTION */
 #screen-q{position:fixed;inset:0;display:none;align-items:center;justify-content:center;z-index:100;background:rgba(0,0,0,.83);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);}
 .qbox{text-align:center;padding:14px 22px 36px;max-width:360px;width:92%;animation:pop .5s cubic-bezier(.34,1.56,.64,1) both;}
 @keyframes pop{from{opacity:0;transform:scale(.82) translateY(22px)}to{opacity:1;transform:scale(1) translateY(0)}}
@@ -192,7 +54,7 @@ html,body{
 #y-btn{background:linear-gradient(135deg,#FF4D7E,#C77DFF);color:#fff;box-shadow:0 0 26px rgba(255,77,126,.4);}
 #n-btn{background:rgba(45,45,45,.95);border:1px solid rgba(255,255,255,.18)!important;color:rgba(255,255,255,.6);}
 
-/* ══ LETTER ══ */
+/* LETTER */
 #screen-l{position:fixed;inset:0;display:none;overflow-y:auto;overflow-x:hidden;z-index:200;background:#000;-webkit-overflow-scrolling:touch;}
 #lbg{position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse 80% 55% at 15% 100%,rgba(110,0,55,.38) 0%,transparent 60%),radial-gradient(ellipse 65% 50% at 85% 0%,rgba(55,0,80,.32) 0%,transparent 60%),#000;}
 .lscroll{position:relative;z-index:10;max-width:500px;margin:0 auto;padding:58px 26px 100px;opacity:0;animation:rise 1.3s ease forwards .3s;}
@@ -214,7 +76,7 @@ html,body{
 .pet{position:fixed;pointer-events:none;z-index:5;animation:pf linear forwards;}
 @keyframes pf{from{transform:translateY(-20px) rotate(0deg);opacity:.7}to{transform:translateY(110vh) rotate(540deg);opacity:0}}
 
-/* ══ EVIL ══ */
+/* EVIL */
 #screen-e{position:fixed;inset:0;display:none;align-items:center;justify-content:center;z-index:200;background:#060000;overflow:hidden;}
 .ebg{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 60% 60% at 50% 50%,rgba(130,0,0,.55) 0%,transparent 70%);animation:ep 1.8s ease-in-out infinite;}
 @keyframes ep{0%,100%{opacity:.7}50%{opacity:1}}
@@ -301,114 +163,120 @@ html,body{
 </div>
 
 <script>
-var ph=1, cnt=0, auto=false, ati=null, lastT=0;
+var ph = 1, cnt = 0, auto = false, ati = null, lastT = 0;
+var FLOWERS = ['🌸','🌺','🌼','🌻','🌷','🌸','🌺','🌷','🌸'];
+var SPARKS  = ['✨','⭐','💫','✦'];
 
-/* colour palettes */
-var PALETTES=[
-  {c:'#FF8FB1',d:'#FF4D7E',s:'rgba(255,77,126,.5)'},
-  {c:'#C77DFF',d:'#9B5DE5',s:'rgba(199,125,255,.5)'},
-  {c:'#FFD60A',d:'#FF9A00',s:'rgba(255,214,10,.4)'},
-  {c:'#FF6B9D',d:'#FF0054',s:'rgba(255,107,157,.5)'},
-  {c:'#E0AAFF',d:'#C77DFF',s:'rgba(224,170,255,.4)'},
-  {c:'#FF85A1',d:'#FF4D7E',s:'rgba(255,133,161,.5)'}
-];
-var TYPES=['tulip','tulip','cosmos','daisy','tulip','heart','cosmos','tulip'];
-var SPARKS=['✨','⭐','💫','✦','·'];
-
-function makeTulip(pal){
-  var w=document.createElement('div');
-  w.className='tulip-wrap';
-  w.style.cssText='--pc:'+pal.c+';--pd:'+pal.d;
-  ['tp-c','tp-l','tp-r'].forEach(function(cls){
-    var p=document.createElement('div');
-    p.className='tulip-petal '+cls;
-    w.appendChild(p);
-  });
-  return w;
-}
-
-function makeCosmos(pal){
-  var w=document.createElement('div');
-  w.className='cosmos-wrap';
-  for(var i=0;i<6;i++){
-    var p=document.createElement('div');
-    p.className='cpetal';
-    p.style.cssText='--pc:'+pal.c+';--pd:'+pal.d+';transform:translateX(-50%) rotate('+((i/6)*360)+'deg) translateY(-100%);';
-    w.appendChild(p);
-  }
-  var cc=document.createElement('div');
-  cc.className='ccenter';
-  w.appendChild(cc);
-  return w;
-}
-
-function makeDaisy(pal){
-  var w=document.createElement('div');
-  w.className='daisy-wrap';
-  for(var i=0;i<10;i++){
-    var p=document.createElement('div');
-    p.className='dpetal';
-    p.style.cssText='--pc:'+pal.c+';transform:translateX(-50%) rotate('+((i/10)*360)+'deg) translateY(-100%);';
-    w.appendChild(p);
-  }
-  var dc=document.createElement('div');
-  dc.className='dcenter';
-  w.appendChild(dc);
-  return w;
-}
-
-function makeHeart(pal){
-  var w=document.createElement('div');
-  w.className='heart-wrap';
-  var h=document.createElement('div');
-  h.className='heart-shape';
-  h.style.cssText='--pc:'+pal.c+';--ps:'+pal.s+';background:'+pal.c+';';
-  h.style.setProperty('--pc',pal.c);
-  h.style.boxShadow='0 0 18px '+pal.s;
-  w.appendChild(h);
-  return w;
-}
-
-function plantFlower(x){
-  var now=Date.now();
-  if(now-lastT<200) return;
-  lastT=now;
-  if(ph!==1) return;
+function makeFlower(x) {
+  var now = Date.now();
+  if (now - lastT < 200) return;
+  lastT = now;
+  if (ph !== 1) return;
 
   cnt++;
-  document.getElementById('ctr').textContent='🌸 '+cnt;
-  if(cnt>=2) document.getElementById('hint').style.opacity='0';
-  if(cnt>=10) document.getElementById('cont-wrap').style.display='block';
+  document.getElementById('ctr').textContent = '🌸 ' + cnt;
+  if (cnt >= 2)  document.getElementById('hint').style.opacity = '0';
+  if (cnt >= 10) document.getElementById('cont-wrap').style.display = 'block';
 
-  var pal=PALETTES[Math.floor(Math.random()*PALETTES.length)];
-  var type=TYPES[Math.floor(Math.random()*TYPES.length)];
-  var stemH=75+Math.floor(Math.random()*130);
-  var delay=Math.random()*0.3; /* slight random delay so garden feels organic */
+  var stemH = 80 + Math.floor(Math.random() * 120);
+  var emoji  = FLOWERS[Math.floor(Math.random() * FLOWERS.length)];
+  var spark  = SPARKS[Math.floor(Math.random() * SPARKS.length)];
 
-  /* wrapper */
-  var fl=document.createElement('div');
-  fl.className='fl';
-  fl.style.left=x+'px';
-  /* random sway offset */
-  fl.style.animationDelay=(-Math.random()*4)+'s';
+  var el = document.createElement('div');
+  el.className = 'flower';
+  el.style.left = x + 'px';
 
-  /* glow */
-  var glow=document.createElement('div');
-  glow.className='glow';
-  var gs=stemH*0.9;
-  glow.style.cssText='width:'+gs+'px;height:'+gs+'px;background:radial-gradient(circle,'+pal.s+' 0%,transparent 70%);top:'+(-(stemH*0.7))+'px;';
-  fl.appendChild(glow);
+  var head = document.createElement('span');
+  head.className = 'flower-head';
+  head.textContent = emoji;
 
-  /* bloom */
-  var bloom=document.createElement('div');
-  bloom.className='bloom';
-  bloom.style.animationDelay=(0.65+delay)+'s';
+  var sp = document.createElement('span');
+  sp.className = 'flower-sparkle';
+  sp.textContent = spark;
 
-  if(type==='tulip')       bloom.appendChild(makeTulip(pal));
-  else if(type==='cosmos') bloom.appendChild(makeCosmos(pal));
-  else if(type==='daisy')  bloom.appendChild(makeDaisy(pal));
-  else                     bloom.appendChild(makeHeart(pal));
-  fl.appendChild(bloom);
+  var stem = document.createElement('div');
+  stem.className = 'flower-stem';
+  stem.style.height = stemH + 'px';
 
-  /* sparks */
-  for(var i=0;i<4;i++)
+  el.appendChild(head);
+  el.appendChild(sp);
+  el.appendChild(stem);
+  document.getElementById('garden').appendChild(el);
+}
+
+document.body.addEventListener('click', function(e) {
+  var t = e.target;
+  if (t.tagName === 'BUTTON' || (t.parentNode && t.parentNode.tagName === 'BUTTON')) return;
+  makeFlower(e.clientX);
+});
+
+document.getElementById('cbtn').addEventListener('click', function() {
+  var g = document.getElementById('garden');
+  while (g.firstChild) g.removeChild(g.firstChild);
+  cnt = 0;
+  document.getElementById('ctr').textContent = '🌸 0';
+  document.getElementById('cont-wrap').style.display = 'none';
+  document.getElementById('hint').style.opacity = '1';
+});
+
+document.getElementById('abtn').addEventListener('click', function() {
+  auto = !auto;
+  this.classList.toggle('on', auto);
+  this.textContent = auto ? '✨ Blooming...' : '✨ Auto Bloom';
+  if (auto) {
+    ati = setInterval(function() {
+      if (ph === 1) makeFlower(60 + Math.random() * (window.innerWidth - 120));
+    }, 600);
+  } else { clearInterval(ati); }
+});
+
+document.getElementById('cont-btn').addEventListener('click', function() { fade(showQ); });
+document.getElementById('y-btn').addEventListener('click', function() { fade(showLetter); });
+document.getElementById('n-btn').addEventListener('click', function() { fade(showEvil); });
+document.getElementById('eback').addEventListener('click', function() {
+  fade(function() {
+    ph = 2;
+    document.getElementById('screen-e').style.display = 'none';
+    document.getElementById('screen-q').style.display = 'flex';
+  });
+});
+
+var ov = document.getElementById('ov');
+function fade(cb) { ov.classList.add('on'); setTimeout(function() { cb(); ov.classList.remove('on'); }, 620); }
+
+function showQ() {
+  ph = 2; if (auto) { auto = false; clearInterval(ati); }
+  ['lbl','ctr','hint','btn-row','cont-wrap','garden'].forEach(function(id) {
+    document.getElementById(id).style.display = 'none';
+  });
+  document.getElementById('screen-q').style.display = 'flex';
+}
+
+function showLetter() {
+  ph = 3;
+  document.getElementById('screen-q').style.display = 'none';
+  document.getElementById('screen-l').style.display = 'block';
+  var PT = ['🌸','💕','✨','🌺','💗','🌷','⭐','💫'];
+  var pi = setInterval(function() {
+    if (ph < 3) { clearInterval(pi); return; }
+    var el = document.createElement('div'); el.className = 'pet';
+    var d = 5 + Math.random() * 7;
+    el.style.left = (Math.random() * 100) + 'vw';
+    el.style.top = '-25px';
+    el.style.fontSize = (11 + Math.random() * 12) + 'px';
+    el.style.animationDuration = d + 's';
+    el.textContent = PT[Math.floor(Math.random() * PT.length)];
+    document.getElementById('screen-l').appendChild(el);
+    setTimeout(function() { if (el.parentNode) el.parentNode.removeChild(el); }, (d + 1) * 1000);
+  }, 900);
+}
+
+function showEvil() {
+  ph = 3;
+  document.getElementById('screen-q').style.display = 'none';
+  document.getElementById('screen-e').style.display = 'flex';
+}
+</script>
+</body>
+                                                                                                                                                                                         </html>
+                                                                                                                                                                                         
